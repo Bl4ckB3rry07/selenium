@@ -20,7 +20,7 @@ pipeline {
             steps {
                 sh '''
                 docker build -t mywebapp:${BUILD_NUMBER} .
-                docker tag mywebapp:${BUILD_NUMBER} laxmi916/mywebapp:latest
+                docker tag mywebapp:${BUILD_NUMBER} blackberry07/mywebapp:latest
                 '''
             }
         }
