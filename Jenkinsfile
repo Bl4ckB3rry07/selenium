@@ -34,10 +34,22 @@ pipeline {
         stage('Start Minikube if not running') {
             steps {
                 sh '''
-                if ! minikube status | grep -q "apiserver: Running"; then
-                    echo "Minikube is not running. Starting now..."
-                    minikube start --driver=docker --memory=2048 --cpus=2
-                fi
+		# 1. Force clear any system-wide locks
+			sudo rm -rf /tmp/minikube-locks
+
+			# 2. Check if minikube is already healthy
+			if ! minikube status | grep -q "apiserver: Running"; then
+			    echo "Minikube is not running or is unhealthy. Starting..."
+			    
+			    # 3. Use 'minikube delete' if it exists but is broken 
+			    # (common after permission-denied crashes)
+			    minikube delete || true
+			    
+			    # 4. Start fresh
+			    minikube start --driver=docker --memory=2048 --cpus=2
+			else
+			    echo "Minikube is already running and healthy."
+			fi
                 '''
             }
         }
