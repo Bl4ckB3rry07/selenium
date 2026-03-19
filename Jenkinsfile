@@ -27,7 +27,7 @@ pipeline {
 
         stage('Push Docker Image') {
             steps {
-                sh 'docker push laxmi916/mywebapp:latest'
+                sh 'docker push blackberry07/mywebapp:latest'
             }
         }
 
@@ -46,7 +46,7 @@ pipeline {
             steps {
                 sh '''
                 # Load latest image into Minikube
-                # minikube image load laxmi916/mywebapp:latest
+                # minikube image load blackberry07/mywebapp:latest
 
                 # Apply manifests
                 minikube kubectl -- apply -f k8s/deployment.yaml
