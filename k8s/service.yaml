@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: my-k8s-app-service
+  name: mywebapp-service
 spec:
   type: NodePort
   selector:
-    app: my-k8s-app
+    app: mywebapp
   ports:
   - port: 8080
     targetPort: 8080

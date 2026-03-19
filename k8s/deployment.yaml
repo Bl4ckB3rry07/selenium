@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: my-k8s-app-deployment
+  name: mywebapp-deployment
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: my-k8s-app
+      app: mywebapp
   template:
     metadata:
       labels:
-        app: my-k8s-app
+        app: mywebapp
     spec:
       containers:
-      - name: my-k8s-app
-        image: laxmi916/my-k8s-app:latest  # your Docker Hub image
+      - name: mywebapp
+        image: blackberry07/mywebapp:latest  # your Docker Hub image
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
