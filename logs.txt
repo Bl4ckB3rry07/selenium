@@ -1,0 +1,920 @@
+
+==> Audit <==
+┌────────────┬──────────────────────────────────────────────────────────────────┬──────────┬─────────────┬─────────┬─────────────────────┬─────────────────────┐
+│  COMMAND   │                               ARGS                               │ PROFILE  │    USER     │ VERSION │     START TIME      │      END TIME       │
+├────────────┼──────────────────────────────────────────────────────────────────┼──────────┼─────────────┼─────────┼─────────────────────┼─────────────────────┤
+│ kubectl    │ -- apply -f k8s/service.yaml                                     │ minikube │ black-berry │ v1.38.0 │ 24 Feb 26 14:44 IST │ 24 Feb 26 14:44 IST │
+│ kubectl    │ -- get pods                                                      │ minikube │ black-berry │ v1.38.0 │ 24 Feb 26 14:44 IST │ 24 Feb 26 14:44 IST │
+│ stop       │                                                                  │ minikube │ black-berry │ v1.38.0 │ 24 Feb 26 14:45 IST │ 24 Feb 26 14:45 IST │
+│ delete     │                                                                  │ minikube │ black-berry │ v1.38.0 │ 24 Feb 26 14:45 IST │ 24 Feb 26 14:45 IST │
+│ start      │ --driver = docker                                                │ minikube │ black-berry │ v1.38.0 │ 24 Feb 26 14:45 IST │                     │
+│ start      │ --driver=docker                                                  │ minikube │ black-berry │ v1.38.0 │ 24 Feb 26 14:46 IST │ 24 Feb 26 14:46 IST │
+│ kubectl    │ -- get nodes                                                     │ minikube │ black-berry │ v1.38.0 │ 24 Feb 26 14:46 IST │ 24 Feb 26 14:46 IST │
+│ image      │ load blackberry07/my-k8s-app:v1                                  │ minikube │ black-berry │ v1.38.0 │ 24 Feb 26 14:47 IST │ 24 Feb 26 14:48 IST │
+│ kubectl    │ -- get nodes                                                     │ minikube │ black-berry │ v1.38.0 │ 24 Feb 26 14:48 IST │ 24 Feb 26 14:48 IST │
+│ kubectl    │ -- apply -f k8s/service.yaml                                     │ minikube │ black-berry │ v1.38.0 │ 24 Feb 26 14:49 IST │ 24 Feb 26 14:49 IST │
+│ kubectl    │ -- get all                                                       │ minikube │ black-berry │ v1.38.0 │ 24 Feb 26 14:49 IST │ 24 Feb 26 14:49 IST │
+│ service    │ my-k8s-app-service                                               │ minikube │ black-berry │ v1.38.0 │ 24 Feb 26 14:50 IST │                     │
+│ kubectl    │ -- apply -f k8s/service.yaml                                     │ minikube │ black-berry │ v1.38.0 │ 24 Feb 26 14:51 IST │ 24 Feb 26 14:51 IST │
+│ service    │ my-k8s-app-service                                               │ minikube │ black-berry │ v1.38.0 │ 24 Feb 26 14:51 IST │                     │
+│ kubectl    │ -- get pods -o wide                                              │ minikube │ black-berry │ v1.38.0 │ 24 Feb 26 14:52 IST │ 24 Feb 26 14:52 IST │
+│ docker-env │                                                                  │ minikube │ black-berry │ v1.38.0 │ 24 Feb 26 14:53 IST │ 24 Feb 26 14:53 IST │
+│ docker-env │                                                                  │ minikube │ black-berry │ v1.38.0 │ 24 Feb 26 15:05 IST │ 24 Feb 26 15:05 IST │
+│ kubectl    │ -- apply -f k8s/deployment.yaml                                  │ minikube │ black-berry │ v1.38.0 │ 24 Feb 26 15:18 IST │ 24 Feb 26 15:18 IST │
+│ kubectl    │ -- get pods                                                      │ minikube │ black-berry │ v1.38.0 │ 24 Feb 26 15:18 IST │ 24 Feb 26 15:18 IST │
+│ service    │ my-k8s-app-service                                               │ minikube │ black-berry │ v1.38.0 │ 24 Feb 26 15:54 IST │ 24 Feb 26 15:54 IST │
+│ start      │ --driver=docker                                                  │ minikube │ black-berry │ v1.38.0 │ 24 Feb 26 16:23 IST │ 24 Feb 26 16:23 IST │
+│ kubectl    │ get nodes                                                        │ minikube │ black-berry │ v1.38.0 │ 24 Feb 26 16:24 IST │ 24 Feb 26 16:24 IST │
+│ kubectl    │ get -pods                                                        │ ods      │ black-berry │ v1.38.0 │ 24 Feb 26 16:24 IST │                     │
+│ kubectl    │ get pods                                                         │ minikube │ black-berry │ v1.38.0 │ 24 Feb 26 16:24 IST │ 24 Feb 26 16:24 IST │
+│ start      │ --driver=docker --memory=2048 --cpus=2                           │ minikube │ black-berry │ v1.38.0 │ 15 Mar 26 18:32 IST │ 15 Mar 26 18:32 IST │
+│ start      │ --driver=docker --memory=2048 --cpus=2                           │ minikube │ black-berry │ v1.38.0 │ 15 Mar 26 18:35 IST │ 15 Mar 26 18:36 IST │
+│ kubectl    │ -- get pods -A                                                   │ minikube │ black-berry │ v1.38.0 │ 15 Mar 26 18:37 IST │ 15 Mar 26 18:37 IST │
+│ kubectl    │ -- get nodes                                                     │ minikube │ black-berry │ v1.38.0 │ 15 Mar 26 18:37 IST │ 15 Mar 26 18:37 IST │
+│ start      │                                                                  │ minikube │ black-berry │ v1.38.0 │ 15 Mar 26 20:20 IST │ 15 Mar 26 20:21 IST │
+│ kubectl    │ get nodes                                                        │ minikube │ black-berry │ v1.38.0 │ 15 Mar 26 20:21 IST │ 15 Mar 26 20:21 IST │
+│ start      │ --driver=docker --memory=2048 --cpus=2                           │ minikube │ black-berry │ v1.38.0 │ 15 Mar 26 20:23 IST │ 15 Mar 26 20:24 IST │
+│ kubectl    │ get pods                                                         │ minikube │ black-berry │ v1.38.0 │ 15 Mar 26 21:29 IST │ 15 Mar 26 21:29 IST │
+│ kubectl    │ get svc                                                          │ minikube │ black-berry │ v1.38.0 │ 15 Mar 26 21:29 IST │ 15 Mar 26 21:29 IST │
+│ service    │ mywebapp-service --url                                           │ minikube │ black-berry │ v1.38.0 │ 15 Mar 26 21:32 IST │                     │
+│ service    │ mywebapp-service --url                                           │ minikube │ black-berry │ v1.38.0 │ 15 Mar 26 21:34 IST │                     │
+│ kubectl    │ -- get svc                                                       │ minikube │ black-berry │ v1.38.0 │ 15 Mar 26 21:34 IST │ 15 Mar 26 21:34 IST │
+│ service    │ my-k8s-app-service --url                                         │ minikube │ black-berry │ v1.38.0 │ 15 Mar 26 21:35 IST │ 15 Mar 26 21:35 IST │
+│ start      │                                                                  │ minikube │ black-berry │ v1.38.0 │ 17 Mar 26 13:54 IST │ 17 Mar 26 13:54 IST │
+│ kubectl    │ -- apply -f k8s/deployment.yaml                                  │ minikube │ black-berry │ v1.38.0 │ 17 Mar 26 13:55 IST │ 17 Mar 26 13:55 IST │
+│ completion │ bash                                                             │ minikube │ black-berry │ v1.38.0 │ 17 Mar 26 13:56 IST │ 17 Mar 26 13:56 IST │
+│ kubectl    │ -- apply -f k8s/service.yaml                                     │ minikube │ black-berry │ v1.38.0 │ 17 Mar 26 13:57 IST │ 17 Mar 26 13:57 IST │
+│ kubectl    │ -- apply -f k8s/deployment.yaml                                  │ minikube │ black-berry │ v1.38.0 │ 17 Mar 26 14:08 IST │ 17 Mar 26 14:08 IST │
+│ kubectl    │ -- apply -f k8s/service.yaml                                     │ minikube │ black-berry │ v1.38.0 │ 17 Mar 26 14:08 IST │ 17 Mar 26 14:08 IST │
+│ stop       │                                                                  │ minikube │ black-berry │ v1.38.0 │ 19 Mar 26 20:48 IST │                     │
+│ start      │ --driver=docker                                                  │ minikube │ black-berry │ v1.38.0 │ 19 Mar 26 20:49 IST │                     │
+│ start      │ --driver=docker                                                  │ minikube │ black-berry │ v1.38.0 │ 19 Mar 26 20:51 IST │ 19 Mar 26 20:51 IST │
+│ kubectl    │ get nodes                                                        │ minikube │ black-berry │ v1.38.0 │ 19 Mar 26 20:52 IST │ 19 Mar 26 20:52 IST │
+│ kubectl    │ -- apply -f k8s/deployment.yaml                                  │ minikube │ black-berry │ v1.38.0 │ 19 Mar 26 20:55 IST │ 19 Mar 26 20:55 IST │
+│ kubectl    │ -- apply -f k8s/service.yaml                                     │ minikube │ black-berry │ v1.38.0 │ 19 Mar 26 20:56 IST │ 19 Mar 26 20:56 IST │
+│ service    │ mywebapp-service                                                 │ minikube │ black-berry │ v1.38.0 │ 19 Mar 26 20:56 IST │                     │
+│ kubectl    │ -- get pods                                                      │ minikube │ black-berry │ v1.38.0 │ 19 Mar 26 20:56 IST │ 19 Mar 26 20:56 IST │
+│ kubectl    │ -- describe pod mywebapp-deployment-55f86dfb5c-5k92f             │ minikube │ black-berry │ v1.38.0 │ 19 Mar 26 20:57 IST │ 19 Mar 26 20:57 IST │
+│ delete     │                                                                  │ minikube │ black-berry │ v1.38.0 │ 19 Mar 26 21:33 IST │ 19 Mar 26 21:33 IST │
+│ start      │ --driver=docker --memory=2048 --cpus=2                           │ minikube │ black-berry │ v1.38.0 │ 19 Mar 26 21:34 IST │ 19 Mar 26 21:34 IST │
+│ kubectl    │ -- get pods -A                                                   │ minikube │ black-berry │ v1.38.0 │ 19 Mar 26 21:34 IST │ 19 Mar 26 21:34 IST │
+│ kubectl    │ -- get pods -n kube-system -w                                    │ minikube │ black-berry │ v1.38.0 │ 19 Mar 26 21:35 IST │                     │
+│ kubectl    │ -- wait --for=condition=ready pod -l app=mywebapp --timeout=120s │ minikube │ black-berry │ v1.38.0 │ 19 Mar 26 21:36 IST │                     │
+│ service    │ mywebapp-service                                                 │ minikube │ black-berry │ v1.38.0 │ 19 Mar 26 21:37 IST │                     │
+│ kubectl    │ -- get deployments                                               │ minikube │ black-berry │ v1.38.0 │ 19 Mar 26 21:39 IST │                     │
+│ kubectl    │ -- describe deployment mywebapp                                  │ minikube │ black-berry │ v1.38.0 │ 19 Mar 26 21:39 IST │                     │
+└────────────┴──────────────────────────────────────────────────────────────────┴──────────┴─────────────┴─────────┴─────────────────────┴─────────────────────┘
+
+
+==> Last Start <==
+Log file created at: 2026/03/19 21:34:10
+Running on machine: black-berry-TravelMate-P214-53
+Binary: Built with gc go1.25.5 for linux/amd64
+Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
+I0319 21:34:10.474274  102267 out.go:360] Setting OutFile to fd 1 ...
+I0319 21:34:10.474549  102267 out.go:413] isatty.IsTerminal(1) = true
+I0319 21:34:10.474555  102267 out.go:374] Setting ErrFile to fd 2...
+I0319 21:34:10.474560  102267 out.go:413] isatty.IsTerminal(2) = true
+I0319 21:34:10.474772  102267 root.go:338] Updating PATH: /home/black-berry/.minikube/bin
+I0319 21:34:10.475335  102267 out.go:368] Setting JSON to false
+I0319 21:34:10.476752  102267 start.go:134] hostinfo: {"hostname":"black-berry-TravelMate-P214-53","uptime":10876,"bootTime":1773925375,"procs":287,"os":"linux","platform":"ubuntu","platformFamily":"debian","platformVersion":"25.10","kernelVersion":"6.17.0-14-generic","kernelArch":"x86_64","virtualizationSystem":"kvm","virtualizationRole":"host","hostId":"1f888fca-4aa4-4d1b-bf52-fc5b99467128"}
+I0319 21:34:10.476826  102267 start.go:144] virtualization: kvm host
+I0319 21:34:10.477671  102267 out.go:179] 😄  minikube v1.38.0 on Ubuntu 25.10
+I0319 21:34:10.479024  102267 notify.go:220] Checking for updates...
+I0319 21:34:10.479137  102267 driver.go:422] Setting default libvirt URI to qemu:///system
+I0319 21:34:10.506996  102267 docker.go:125] docker version: linux-28.1.1:Docker Engine - Community
+I0319 21:34:10.507083  102267 cli_runner.go:164] Run: docker system info --format "{{json .}}"
+I0319 21:34:10.528346  102267 info.go:266] docker info: {ID:a6fdeb83-c507-4720-8da5-3f18bb17d598 Containers:14 ContainersRunning:0 ContainersPaused:0 ContainersStopped:14 Images:48 Driver:overlay2 DriverStatus:[[Backing Filesystem extfs] [Supports d_type true] [Using metacopy false] [Native Overlay Diff true] [userxattr false]] SystemStatus:<nil> Plugins:{Volume:[local] Network:[bridge host ipvlan macvlan null overlay] Authorization:<nil> Log:[awslogs fluentd gcplogs gelf journald json-file local splunk syslog]} MemoryLimit:true SwapLimit:true KernelMemory:false KernelMemoryTCP:false CPUCfsPeriod:true CPUCfsQuota:true CPUShares:true CPUSet:true PidsLimit:true IPv4Forwarding:true BridgeNfIptables:false BridgeNfIP6Tables:false Debug:false NFd:22 OomKillDisable:false NGoroutines:41 SystemTime:2026-03-19 21:34:10.520274362 +0530 IST LoggingDriver:json-file CgroupDriver:systemd NEventsListener:0 KernelVersion:6.17.0-14-generic OperatingSystem:Ubuntu 25.10 OSType:linux Architecture:x86_64 IndexServerAddress:https://index.docker.io/v1/ RegistryConfig:{AllowNondistributableArtifactsCIDRs:[] AllowNondistributableArtifactsHostnames:[] InsecureRegistryCIDRs:[::1/128 127.0.0.0/8] IndexConfigs:{DockerIo:{Name:docker.io Mirrors:[] Secure:true Official:true}} Mirrors:[]} NCPU:4 MemTotal:7556239360 GenericResources:<nil> DockerRootDir:/var/lib/docker HTTPProxy: HTTPSProxy: NoProxy: Name:black-berry-TravelMate-P214-53 Labels:[] ExperimentalBuild:false ServerVersion:28.1.1 ClusterStore: ClusterAdvertise: Runtimes:{Runc:{Path:runc}} DefaultRuntime:runc Swarm:{NodeID: NodeAddr: LocalNodeState:inactive ControlAvailable:false Error: RemoteManagers:<nil>} LiveRestoreEnabled:false Isolation: InitBinary:docker-init ContainerdCommit:{ID:05044ec0a9a75232cad458027ca83437aae3f4da Expected:} RuncCommit:{ID:v1.2.5-0-g59923ef Expected:} InitCommit:{ID:de40ad0 Expected:} SecurityOptions:[name=apparmor name=seccomp,profile=builtin name=cgroupns] ProductLicense: Warnings:<nil> ServerErrors:[] ClientInfo:{Debug:false Plugins:[] Warnings:<nil>}}
+I0319 21:34:10.528410  102267 docker.go:320] overlay module found
+I0319 21:34:10.529075  102267 out.go:179] ✨  Using the docker driver based on user configuration
+I0319 21:34:10.530102  102267 start.go:310] selected driver: docker
+I0319 21:34:10.530108  102267 start.go:932] validating driver "docker" against <nil>
+I0319 21:34:10.530118  102267 start.go:943] status for docker: {Installed:true Healthy:true Running:false NeedsImprovement:false Error:<nil> Reason: Fix: Doc: Version:}
+I0319 21:34:10.530650  102267 cli_runner.go:164] Run: docker system info --format "{{json .}}"
+I0319 21:34:10.554717  102267 info.go:266] docker info: {ID:a6fdeb83-c507-4720-8da5-3f18bb17d598 Containers:14 ContainersRunning:0 ContainersPaused:0 ContainersStopped:14 Images:48 Driver:overlay2 DriverStatus:[[Backing Filesystem extfs] [Supports d_type true] [Using metacopy false] [Native Overlay Diff true] [userxattr false]] SystemStatus:<nil> Plugins:{Volume:[local] Network:[bridge host ipvlan macvlan null overlay] Authorization:<nil> Log:[awslogs fluentd gcplogs gelf journald json-file local splunk syslog]} MemoryLimit:true SwapLimit:true KernelMemory:false KernelMemoryTCP:false CPUCfsPeriod:true CPUCfsQuota:true CPUShares:true CPUSet:true PidsLimit:true IPv4Forwarding:true BridgeNfIptables:false BridgeNfIP6Tables:false Debug:false NFd:22 OomKillDisable:false NGoroutines:41 SystemTime:2026-03-19 21:34:10.547261546 +0530 IST LoggingDriver:json-file CgroupDriver:systemd NEventsListener:0 KernelVersion:6.17.0-14-generic OperatingSystem:Ubuntu 25.10 OSType:linux Architecture:x86_64 IndexServerAddress:https://index.docker.io/v1/ RegistryConfig:{AllowNondistributableArtifactsCIDRs:[] AllowNondistributableArtifactsHostnames:[] InsecureRegistryCIDRs:[::1/128 127.0.0.0/8] IndexConfigs:{DockerIo:{Name:docker.io Mirrors:[] Secure:true Official:true}} Mirrors:[]} NCPU:4 MemTotal:7556239360 GenericResources:<nil> DockerRootDir:/var/lib/docker HTTPProxy: HTTPSProxy: NoProxy: Name:black-berry-TravelMate-P214-53 Labels:[] ExperimentalBuild:false ServerVersion:28.1.1 ClusterStore: ClusterAdvertise: Runtimes:{Runc:{Path:runc}} DefaultRuntime:runc Swarm:{NodeID: NodeAddr: LocalNodeState:inactive ControlAvailable:false Error: RemoteManagers:<nil>} LiveRestoreEnabled:false Isolation: InitBinary:docker-init ContainerdCommit:{ID:05044ec0a9a75232cad458027ca83437aae3f4da Expected:} RuncCommit:{ID:v1.2.5-0-g59923ef Expected:} InitCommit:{ID:de40ad0 Expected:} SecurityOptions:[name=apparmor name=seccomp,profile=builtin name=cgroupns] ProductLicense: Warnings:<nil> ServerErrors:[] ClientInfo:{Debug:false Plugins:[] Warnings:<nil>}}
+W0319 21:34:10.554858  102267 out.go:285] ❗  Starting v1.39.0, minikube will default to "containerd" container runtime. See #21973 for more info.
+I0319 21:34:10.554879  102267 start_flags.go:332] no existing cluster config was found, will generate one from the flags 
+I0319 21:34:10.555158  102267 start_flags.go:1000] Wait components to verify : map[apiserver:true system_pods:true]
+I0319 21:34:10.556076  102267 out.go:179] 📌  Using Docker driver with root privileges
+I0319 21:34:10.556609  102267 cni.go:83] Creating CNI manager for ""
+I0319 21:34:10.556652  102267 cni.go:157] "docker" driver + "docker" container runtime found on kubernetes v1.24+, recommending bridge
+I0319 21:34:10.556657  102267 start_flags.go:341] Found "bridge CNI" CNI - setting NetworkPlugin=cni
+I0319 21:34:10.556700  102267 start.go:357] cluster config:
+{Name:minikube KeepContext:false EmbedCerts:false MinikubeISO: KicBaseImage:gcr.io/k8s-minikube/kicbase:v0.0.49@sha256:e6daddbb1dc09ccd195c5605f65e2d38406c36ef36c5a492ffe805d9d36f4945 Memory:2048 CPUs:2 DiskSize:20000 Driver:docker HyperkitVpnKitSock: HyperkitVSockPorts:[] DockerEnv:[] ContainerVolumeMounts:[] InsecureRegistry:[] RegistryMirror:[] HostOnlyCIDR:192.168.59.1/24 HypervVirtualSwitch: HypervUseExternalSwitch:false HypervExternalAdapter: KVMNetwork:default KVMQemuURI:qemu:///system KVMGPU:false KVMHidden:false KVMNUMACount:1 APIServerPort:8443 DockerOpt:[] DisableDriverMounts:false NFSShare:[] NFSSharesRoot:/nfsshares UUID: NoVTXCheck:false DNSProxy:false HostDNSResolver:true HostOnlyNicType:virtio NatNicType:virtio SSHIPAddress: SSHUser:root SSHKey: SSHPort:22 KubernetesConfig:{KubernetesVersion:v1.35.0 ClusterName:minikube Namespace:default APIServerHAVIP: APIServerName:minikubeCA APIServerNames:[] APIServerIPs:[] DNSDomain:cluster.local ContainerRuntime:docker CRISocket: NetworkPlugin:cni FeatureGates: ServiceCIDR:10.96.0.0/12 ImageRepository: LoadBalancerStartIP: LoadBalancerEndIP: CustomIngressCert: RegistryAliases: ExtraOptions:[] ShouldLoadCachedImages:true EnableDefaultCNI:false CNI:} Nodes:[{Name: IP: Port:8443 KubernetesVersion:v1.35.0 ContainerRuntime:docker ControlPlane:true Worker:true}] Addons:map[] CustomAddonImages:map[] CustomAddonRegistries:map[] VerifyComponents:map[apiserver:true system_pods:true] StartHostTimeout:6m0s ScheduledStop:<nil> ExposedPorts:[] ListenAddress: Network: Subnet: MultiNodeRequested:false ExtraDisks:0 CertExpiration:26280h0m0s MountString: Mount9PVersion:9p2000.L MountGID:docker MountIP: MountMSize:262144 MountOptions:[] MountPort:0 MountType:9p MountUID:docker BinaryMirror: DisableOptimizations:false DisableMetrics:false DisableCoreDNSLog:false CustomQemuFirmwarePath: SocketVMnetClientPath: SocketVMnetPath: StaticIP: SSHAuthSock: SSHAgentPID:0 GPUs: AutoPauseInterval:1m0s Rosetta:false}
+I0319 21:34:10.557368  102267 out.go:179] 👍  Starting "minikube" primary control-plane node in "minikube" cluster
+I0319 21:34:10.558334  102267 cache.go:135] Beginning downloading kic base image for docker with docker
+I0319 21:34:10.558865  102267 out.go:179] 🚜  Pulling base image v0.0.49 ...
+I0319 21:34:10.559821  102267 preload.go:187] Checking if preload exists for k8s version v1.35.0 and runtime docker
+I0319 21:34:10.559842  102267 preload.go:202] Found local preload: /home/black-berry/.minikube/cache/preloaded-tarball/preloaded-images-k8s-v18-v1.35.0-docker-overlay2-amd64.tar.lz4
+I0319 21:34:10.559847  102267 cache.go:66] Caching tarball of preloaded images
+I0319 21:34:10.559897  102267 image.go:82] Checking for gcr.io/k8s-minikube/kicbase:v0.0.49@sha256:e6daddbb1dc09ccd195c5605f65e2d38406c36ef36c5a492ffe805d9d36f4945 in local docker daemon
+I0319 21:34:10.559942  102267 preload.go:250] Found /home/black-berry/.minikube/cache/preloaded-tarball/preloaded-images-k8s-v18-v1.35.0-docker-overlay2-amd64.tar.lz4 in cache, skipping download
+I0319 21:34:10.559953  102267 cache.go:69] Finished verifying existence of preloaded tar for v1.35.0 on docker
+I0319 21:34:10.560480  102267 profile.go:143] Saving config to /home/black-berry/.minikube/profiles/minikube/config.json ...
+I0319 21:34:10.560509  102267 lock.go:60] WriteFile acquiring /home/black-berry/.minikube/profiles/minikube/config.json: {Name:mk2332ce7a5d603469a3a0f274d1aa2e320d6db6 Timeout:1m0s Delay:500ms}
+I0319 21:34:10.593184  102267 image.go:101] Found gcr.io/k8s-minikube/kicbase:v0.0.49@sha256:e6daddbb1dc09ccd195c5605f65e2d38406c36ef36c5a492ffe805d9d36f4945 in local docker daemon, skipping pull
+I0319 21:34:10.593193  102267 cache.go:159] gcr.io/k8s-minikube/kicbase:v0.0.49@sha256:e6daddbb1dc09ccd195c5605f65e2d38406c36ef36c5a492ffe805d9d36f4945 exists in daemon, skipping load
+I0319 21:34:10.593207  102267 cache.go:244] Successfully downloaded all kic artifacts
+I0319 21:34:10.593234  102267 start.go:359] acquireMachinesLock for minikube: {Name:mk3f49a7fa55983212d42e80fd94fdbdac6c0d3f Timeout:10m0s Delay:500ms}
+I0319 21:34:10.593292  102267 start.go:363] duration metric: took 47.706µs to acquireMachinesLock for "minikube"
+I0319 21:34:10.593304  102267 start.go:92] Provisioning new machine with config: &{Name:minikube KeepContext:false EmbedCerts:false MinikubeISO: KicBaseImage:gcr.io/k8s-minikube/kicbase:v0.0.49@sha256:e6daddbb1dc09ccd195c5605f65e2d38406c36ef36c5a492ffe805d9d36f4945 Memory:2048 CPUs:2 DiskSize:20000 Driver:docker HyperkitVpnKitSock: HyperkitVSockPorts:[] DockerEnv:[] ContainerVolumeMounts:[] InsecureRegistry:[] RegistryMirror:[] HostOnlyCIDR:192.168.59.1/24 HypervVirtualSwitch: HypervUseExternalSwitch:false HypervExternalAdapter: KVMNetwork:default KVMQemuURI:qemu:///system KVMGPU:false KVMHidden:false KVMNUMACount:1 APIServerPort:8443 DockerOpt:[] DisableDriverMounts:false NFSShare:[] NFSSharesRoot:/nfsshares UUID: NoVTXCheck:false DNSProxy:false HostDNSResolver:true HostOnlyNicType:virtio NatNicType:virtio SSHIPAddress: SSHUser:root SSHKey: SSHPort:22 KubernetesConfig:{KubernetesVersion:v1.35.0 ClusterName:minikube Namespace:default APIServerHAVIP: APIServerName:minikubeCA APIServerNames:[] APIServerIPs:[] DNSDomain:cluster.local ContainerRuntime:docker CRISocket: NetworkPlugin:cni FeatureGates: ServiceCIDR:10.96.0.0/12 ImageRepository: LoadBalancerStartIP: LoadBalancerEndIP: CustomIngressCert: RegistryAliases: ExtraOptions:[] ShouldLoadCachedImages:true EnableDefaultCNI:false CNI:} Nodes:[{Name: IP: Port:8443 KubernetesVersion:v1.35.0 ContainerRuntime:docker ControlPlane:true Worker:true}] Addons:map[] CustomAddonImages:map[] CustomAddonRegistries:map[] VerifyComponents:map[apiserver:true system_pods:true] StartHostTimeout:6m0s ScheduledStop:<nil> ExposedPorts:[] ListenAddress: Network: Subnet: MultiNodeRequested:false ExtraDisks:0 CertExpiration:26280h0m0s MountString: Mount9PVersion:9p2000.L MountGID:docker MountIP: MountMSize:262144 MountOptions:[] MountPort:0 MountType:9p MountUID:docker BinaryMirror: DisableOptimizations:false DisableMetrics:false DisableCoreDNSLog:false CustomQemuFirmwarePath: SocketVMnetClientPath: SocketVMnetPath: StaticIP: SSHAuthSock: SSHAgentPID:0 GPUs: AutoPauseInterval:1m0s Rosetta:false} &{Name: IP: Port:8443 KubernetesVersion:v1.35.0 ContainerRuntime:docker ControlPlane:true Worker:true}
+I0319 21:34:10.593370  102267 start.go:124] createHost starting for "" (driver="docker")
+I0319 21:34:10.594187  102267 out.go:252] 🔥  Creating docker container (CPUs=2, Memory=2048MB) ...
+I0319 21:34:10.594468  102267 start.go:158] libmachine.API.Create for "minikube" (driver="docker")
+I0319 21:34:10.594492  102267 client.go:173] LocalClient.Create starting
+I0319 21:34:10.594557  102267 main.go:144] libmachine: Reading certificate data from /home/black-berry/.minikube/certs/ca.pem
+I0319 21:34:10.594599  102267 main.go:144] libmachine: Decoding PEM data...
+I0319 21:34:10.594625  102267 main.go:144] libmachine: Parsing certificate...
+I0319 21:34:10.594699  102267 main.go:144] libmachine: Reading certificate data from /home/black-berry/.minikube/certs/cert.pem
+I0319 21:34:10.595276  102267 main.go:144] libmachine: Decoding PEM data...
+I0319 21:34:10.595295  102267 main.go:144] libmachine: Parsing certificate...
+I0319 21:34:10.595734  102267 cli_runner.go:164] Run: docker network inspect minikube --format "{"Name": "{{.Name}}","Driver": "{{.Driver}}","Subnet": "{{range .IPAM.Config}}{{.Subnet}}{{end}}","Gateway": "{{range .IPAM.Config}}{{.Gateway}}{{end}}","MTU": {{if (index .Options "com.docker.network.driver.mtu")}}{{(index .Options "com.docker.network.driver.mtu")}}{{else}}0{{end}}, "ContainerIPs": [{{range $k,$v := .Containers }}"{{$v.IPv4Address}}",{{end}}]}"
+W0319 21:34:10.617758  102267 cli_runner.go:211] docker network inspect minikube --format "{"Name": "{{.Name}}","Driver": "{{.Driver}}","Subnet": "{{range .IPAM.Config}}{{.Subnet}}{{end}}","Gateway": "{{range .IPAM.Config}}{{.Gateway}}{{end}}","MTU": {{if (index .Options "com.docker.network.driver.mtu")}}{{(index .Options "com.docker.network.driver.mtu")}}{{else}}0{{end}}, "ContainerIPs": [{{range $k,$v := .Containers }}"{{$v.IPv4Address}}",{{end}}]}" returned with exit code 1
+I0319 21:34:10.617828  102267 network_create.go:285] running [docker network inspect minikube] to gather additional debugging logs...
+I0319 21:34:10.617842  102267 cli_runner.go:164] Run: docker network inspect minikube
+W0319 21:34:10.634042  102267 cli_runner.go:211] docker network inspect minikube returned with exit code 1
+I0319 21:34:10.634068  102267 network_create.go:288] error running [docker network inspect minikube]: docker network inspect minikube: exit status 1
+stdout:
+[]
+
+stderr:
+Error response from daemon: network minikube not found
+I0319 21:34:10.634079  102267 network_create.go:290] output of [docker network inspect minikube]: -- stdout --
+[]
+
+-- /stdout --
+** stderr ** 
+Error response from daemon: network minikube not found
+
+** /stderr **
+I0319 21:34:10.634185  102267 cli_runner.go:164] Run: docker network inspect bridge --format "{"Name": "{{.Name}}","Driver": "{{.Driver}}","Subnet": "{{range .IPAM.Config}}{{.Subnet}}{{end}}","Gateway": "{{range .IPAM.Config}}{{.Gateway}}{{end}}","MTU": {{if (index .Options "com.docker.network.driver.mtu")}}{{(index .Options "com.docker.network.driver.mtu")}}{{else}}0{{end}}, "ContainerIPs": [{{range $k,$v := .Containers }}"{{$v.IPv4Address}}",{{end}}]}"
+I0319 21:34:10.652621  102267 network.go:205] using free private subnet 192.168.49.0/24: &{IP:192.168.49.0 Netmask:255.255.255.0 Prefix:24 CIDR:192.168.49.0/24 Gateway:192.168.49.1 ClientMin:192.168.49.2 ClientMax:192.168.49.254 Broadcast:192.168.49.255 IsPrivate:true Interface:{IfaceName: IfaceIPv4: IfaceMTU:0 IfaceMAC:} reservation:0xc0006ce260}
+I0319 21:34:10.652659  102267 network_create.go:125] attempt to create docker network minikube 192.168.49.0/24 with gateway 192.168.49.1 and MTU of 1500 ...
+I0319 21:34:10.652722  102267 cli_runner.go:164] Run: docker network create --driver=bridge --subnet=192.168.49.0/24 --gateway=192.168.49.1 -o --ip-masq -o --icc -o com.docker.network.driver.mtu=1500 --label=created_by.minikube.sigs.k8s.io=true --label=name.minikube.sigs.k8s.io=minikube minikube
+I0319 21:34:10.722234  102267 network_create.go:109] docker network minikube 192.168.49.0/24 created
+I0319 21:34:10.722261  102267 kic.go:120] calculated static IP "192.168.49.2" for the "minikube" container
+I0319 21:34:10.722360  102267 cli_runner.go:164] Run: docker ps -a --format {{.Names}}
+I0319 21:34:10.756003  102267 cli_runner.go:164] Run: docker volume create minikube --label name.minikube.sigs.k8s.io=minikube --label created_by.minikube.sigs.k8s.io=true
+I0319 21:34:10.775414  102267 oci.go:102] Successfully created a docker volume minikube
+I0319 21:34:10.775479  102267 cli_runner.go:164] Run: docker run --rm --name minikube-preload-sidecar --label created_by.minikube.sigs.k8s.io=true --label name.minikube.sigs.k8s.io=minikube --entrypoint /usr/bin/test -v minikube:/var gcr.io/k8s-minikube/kicbase:v0.0.49@sha256:e6daddbb1dc09ccd195c5605f65e2d38406c36ef36c5a492ffe805d9d36f4945 -d /var/lib
+I0319 21:34:11.440294  102267 oci.go:106] Successfully prepared a docker volume minikube
+I0319 21:34:11.440381  102267 preload.go:187] Checking if preload exists for k8s version v1.35.0 and runtime docker
+I0319 21:34:11.440391  102267 kic.go:193] Starting extracting preloaded images to volume ...
+I0319 21:34:11.440463  102267 cli_runner.go:164] Run: docker run --rm --entrypoint /usr/bin/tar -v /home/black-berry/.minikube/cache/preloaded-tarball/preloaded-images-k8s-v18-v1.35.0-docker-overlay2-amd64.tar.lz4:/preloaded.tar:ro -v minikube:/extractDir gcr.io/k8s-minikube/kicbase:v0.0.49@sha256:e6daddbb1dc09ccd195c5605f65e2d38406c36ef36c5a492ffe805d9d36f4945 -I lz4 -xf /preloaded.tar -C /extractDir
+I0319 21:34:13.467447  102267 cli_runner.go:217] Completed: docker run --rm --entrypoint /usr/bin/tar -v /home/black-berry/.minikube/cache/preloaded-tarball/preloaded-images-k8s-v18-v1.35.0-docker-overlay2-amd64.tar.lz4:/preloaded.tar:ro -v minikube:/extractDir gcr.io/k8s-minikube/kicbase:v0.0.49@sha256:e6daddbb1dc09ccd195c5605f65e2d38406c36ef36c5a492ffe805d9d36f4945 -I lz4 -xf /preloaded.tar -C /extractDir: (2.026931832s)
+I0319 21:34:13.467473  102267 kic.go:202] duration metric: took 2.027074938s to extract preloaded images to volume ...
+W0319 21:34:13.467584  102267 cgroups_linux.go:77] Your kernel does not support swap limit capabilities or the cgroup is not mounted.
+W0319 21:34:13.467629  102267 oci.go:251] Your kernel does not support CPU cfs period/quota or the cgroup is not mounted.
+I0319 21:34:13.467686  102267 cli_runner.go:164] Run: docker info --format "'{{json .SecurityOptions}}'"
+I0319 21:34:13.501697  102267 cli_runner.go:164] Run: docker run -d -t --privileged --security-opt seccomp=unconfined --tmpfs /tmp --tmpfs /run -v /lib/modules:/lib/modules:ro --hostname minikube --name minikube --label created_by.minikube.sigs.k8s.io=true --label name.minikube.sigs.k8s.io=minikube --label role.minikube.sigs.k8s.io= --label mode.minikube.sigs.k8s.io=minikube --network minikube --ip 192.168.49.2 --volume minikube:/var --security-opt apparmor=unconfined --memory=2048mb -e container=docker --expose 8443 --publish=127.0.0.1::8443 --publish=127.0.0.1::22 --publish=127.0.0.1::2376 --publish=127.0.0.1::5000 --publish=127.0.0.1::32443 gcr.io/k8s-minikube/kicbase:v0.0.49@sha256:e6daddbb1dc09ccd195c5605f65e2d38406c36ef36c5a492ffe805d9d36f4945
+I0319 21:34:13.893292  102267 cli_runner.go:164] Run: docker container inspect minikube --format={{.State.Running}}
+I0319 21:34:13.932302  102267 cli_runner.go:164] Run: docker container inspect minikube --format={{.State.Status}}
+I0319 21:34:13.963669  102267 cli_runner.go:164] Run: docker exec minikube stat /var/lib/dpkg/alternatives/iptables
+I0319 21:34:14.057519  102267 oci.go:143] the created container "minikube" has a running status.
+I0319 21:34:14.057547  102267 kic.go:224] Creating ssh key for kic: /home/black-berry/.minikube/machines/minikube/id_rsa...
+I0319 21:34:14.269702  102267 kic_runner.go:190] docker (temp): /home/black-berry/.minikube/machines/minikube/id_rsa.pub --> /home/docker/.ssh/authorized_keys (381 bytes)
+I0319 21:34:14.292027  102267 cli_runner.go:164] Run: docker container inspect minikube --format={{.State.Status}}
+I0319 21:34:14.332428  102267 kic_runner.go:92] Run: chown docker:docker /home/docker/.ssh/authorized_keys
+I0319 21:34:14.332445  102267 kic_runner.go:113] Args: [docker exec --privileged minikube chown docker:docker /home/docker/.ssh/authorized_keys]
+I0319 21:34:14.392646  102267 cli_runner.go:164] Run: docker container inspect minikube --format={{.State.Status}}
+I0319 21:34:14.407942  102267 machine.go:96] provisionDockerMachine start ...
+I0319 21:34:14.408028  102267 cli_runner.go:164] Run: docker container inspect -f "'{{(index (index .NetworkSettings.Ports "22/tcp") 0).HostPort}}'" minikube
+I0319 21:34:14.435892  102267 main.go:144] libmachine: Using SSH client type: native
+I0319 21:34:14.436268  102267 main.go:144] libmachine: &{{{<nil> 0 [] [] []} docker [0x906340] 0x908fe0 <nil>  [] 0s} 127.0.0.1 32778 <nil> <nil>}
+I0319 21:34:14.436278  102267 main.go:144] libmachine: About to run SSH command:
+hostname
+I0319 21:34:14.437060  102267 main.go:144] libmachine: Error dialing TCP: ssh: handshake failed: read tcp 127.0.0.1:37014->127.0.0.1:32778: read: connection reset by peer
+I0319 21:34:17.626595  102267 main.go:144] libmachine: SSH cmd err, output: <nil>: minikube
+
+I0319 21:34:17.626615  102267 ubuntu.go:182] provisioning hostname "minikube"
+I0319 21:34:17.626695  102267 cli_runner.go:164] Run: docker container inspect -f "'{{(index (index .NetworkSettings.Ports "22/tcp") 0).HostPort}}'" minikube
+I0319 21:34:17.662202  102267 main.go:144] libmachine: Using SSH client type: native
+I0319 21:34:17.662621  102267 main.go:144] libmachine: &{{{<nil> 0 [] [] []} docker [0x906340] 0x908fe0 <nil>  [] 0s} 127.0.0.1 32778 <nil> <nil>}
+I0319 21:34:17.662635  102267 main.go:144] libmachine: About to run SSH command:
+sudo hostname minikube && echo "minikube" | sudo tee /etc/hostname
+I0319 21:34:17.865688  102267 main.go:144] libmachine: SSH cmd err, output: <nil>: minikube
+
+I0319 21:34:17.865808  102267 cli_runner.go:164] Run: docker container inspect -f "'{{(index (index .NetworkSettings.Ports "22/tcp") 0).HostPort}}'" minikube
+I0319 21:34:17.894821  102267 main.go:144] libmachine: Using SSH client type: native
+I0319 21:34:17.895430  102267 main.go:144] libmachine: &{{{<nil> 0 [] [] []} docker [0x906340] 0x908fe0 <nil>  [] 0s} 127.0.0.1 32778 <nil> <nil>}
+I0319 21:34:17.895468  102267 main.go:144] libmachine: About to run SSH command:
+
+		if ! grep -xq '.*\sminikube' /etc/hosts; then
+			if grep -xq '127.0.1.1\s.*' /etc/hosts; then
+				sudo sed -i 's/^127.0.1.1\s.*/127.0.1.1 minikube/g' /etc/hosts;
+			else 
+				echo '127.0.1.1 minikube' | sudo tee -a /etc/hosts; 
+			fi
+		fi
+I0319 21:34:18.063303  102267 main.go:144] libmachine: SSH cmd err, output: <nil>: 
+I0319 21:34:18.063394  102267 ubuntu.go:188] set auth options {CertDir:/home/black-berry/.minikube CaCertPath:/home/black-berry/.minikube/certs/ca.pem CaPrivateKeyPath:/home/black-berry/.minikube/certs/ca-key.pem CaCertRemotePath:/etc/docker/ca.pem ServerCertPath:/home/black-berry/.minikube/machines/server.pem ServerKeyPath:/home/black-berry/.minikube/machines/server-key.pem ClientKeyPath:/home/black-berry/.minikube/certs/key.pem ServerCertRemotePath:/etc/docker/server.pem ServerKeyRemotePath:/etc/docker/server-key.pem ClientCertPath:/home/black-berry/.minikube/certs/cert.pem ServerCertSANs:[] StorePath:/home/black-berry/.minikube}
+I0319 21:34:18.063426  102267 ubuntu.go:190] setting up certificates
+I0319 21:34:18.063440  102267 provision.go:83] configureAuth start
+I0319 21:34:18.063547  102267 cli_runner.go:164] Run: docker container inspect -f "{{range .NetworkSettings.Networks}}{{.IPAddress}},{{.GlobalIPv6Address}}{{end}}" minikube
+I0319 21:34:18.095815  102267 provision.go:142] copyHostCerts
+I0319 21:34:18.095884  102267 exec_runner.go:143] found /home/black-berry/.minikube/ca.pem, removing ...
+I0319 21:34:18.095893  102267 exec_runner.go:202] rm: /home/black-berry/.minikube/ca.pem
+I0319 21:34:18.095983  102267 exec_runner.go:150] cp: /home/black-berry/.minikube/certs/ca.pem --> /home/black-berry/.minikube/ca.pem (1090 bytes)
+I0319 21:34:18.096121  102267 exec_runner.go:143] found /home/black-berry/.minikube/cert.pem, removing ...
+I0319 21:34:18.096128  102267 exec_runner.go:202] rm: /home/black-berry/.minikube/cert.pem
+I0319 21:34:18.096164  102267 exec_runner.go:150] cp: /home/black-berry/.minikube/certs/cert.pem --> /home/black-berry/.minikube/cert.pem (1135 bytes)
+I0319 21:34:18.096252  102267 exec_runner.go:143] found /home/black-berry/.minikube/key.pem, removing ...
+I0319 21:34:18.096256  102267 exec_runner.go:202] rm: /home/black-berry/.minikube/key.pem
+I0319 21:34:18.096282  102267 exec_runner.go:150] cp: /home/black-berry/.minikube/certs/key.pem --> /home/black-berry/.minikube/key.pem (1675 bytes)
+I0319 21:34:18.102613  102267 provision.go:116] generating server cert: /home/black-berry/.minikube/machines/server.pem ca-key=/home/black-berry/.minikube/certs/ca.pem private-key=/home/black-berry/.minikube/certs/ca-key.pem org=black-berry.minikube san=[127.0.0.1 192.168.49.2 localhost minikube]
+I0319 21:34:18.157918  102267 provision.go:176] copyRemoteCerts
+I0319 21:34:18.157974  102267 ssh_runner.go:194] Run: sudo mkdir -p /etc/docker /etc/docker /etc/docker
+I0319 21:34:18.158002  102267 cli_runner.go:164] Run: docker container inspect -f "'{{(index (index .NetworkSettings.Ports "22/tcp") 0).HostPort}}'" minikube
+I0319 21:34:18.171788  102267 sshutil.go:53] new ssh client: &{IP:127.0.0.1 Port:32778 SSHKeyPath:/home/black-berry/.minikube/machines/minikube/id_rsa Username:docker}
+I0319 21:34:18.284522  102267 ssh_runner.go:361] scp /home/black-berry/.minikube/certs/ca.pem --> /etc/docker/ca.pem (1090 bytes)
+I0319 21:34:18.325437  102267 ssh_runner.go:361] scp /home/black-berry/.minikube/machines/server.pem --> /etc/docker/server.pem (1192 bytes)
+I0319 21:34:18.358684  102267 ssh_runner.go:361] scp /home/black-berry/.minikube/machines/server-key.pem --> /etc/docker/server-key.pem (1671 bytes)
+I0319 21:34:18.388714  102267 provision.go:86] duration metric: took 325.221856ms to configureAuth
+I0319 21:34:18.388750  102267 ubuntu.go:206] setting minikube options for container-runtime
+I0319 21:34:18.388997  102267 config.go:183] Loaded profile config "minikube": Driver=docker, ContainerRuntime=docker, KubernetesVersion=v1.35.0
+I0319 21:34:18.389070  102267 cli_runner.go:164] Run: docker container inspect -f "'{{(index (index .NetworkSettings.Ports "22/tcp") 0).HostPort}}'" minikube
+I0319 21:34:18.415412  102267 main.go:144] libmachine: Using SSH client type: native
+I0319 21:34:18.415778  102267 main.go:144] libmachine: &{{{<nil> 0 [] [] []} docker [0x906340] 0x908fe0 <nil>  [] 0s} 127.0.0.1 32778 <nil> <nil>}
+I0319 21:34:18.415790  102267 main.go:144] libmachine: About to run SSH command:
+df --output=fstype / | tail -n 1
+I0319 21:34:18.594066  102267 main.go:144] libmachine: SSH cmd err, output: <nil>: overlay
+
+I0319 21:34:18.594088  102267 ubuntu.go:71] root file system type: overlay
+I0319 21:34:18.594230  102267 provision.go:313] Updating docker unit: /lib/systemd/system/docker.service ...
+I0319 21:34:18.594334  102267 cli_runner.go:164] Run: docker container inspect -f "'{{(index (index .NetworkSettings.Ports "22/tcp") 0).HostPort}}'" minikube
+I0319 21:34:18.623495  102267 main.go:144] libmachine: Using SSH client type: native
+I0319 21:34:18.623887  102267 main.go:144] libmachine: &{{{<nil> 0 [] [] []} docker [0x906340] 0x908fe0 <nil>  [] 0s} 127.0.0.1 32778 <nil> <nil>}
+I0319 21:34:18.624048  102267 main.go:144] libmachine: About to run SSH command:
+sudo mkdir -p /lib/systemd/system && printf %s "[Unit]
+Description=Docker Application Container Engine
+Documentation=https://docs.docker.com
+After=network-online.target nss-lookup.target docker.socket firewalld.service containerd.service time-set.target
+Wants=network-online.target containerd.service
+Requires=docker.socket
+StartLimitBurst=3
+StartLimitIntervalSec=60
+
+[Service]
+Type=notify
+Restart=always
+
+
+
+# This file is a systemd drop-in unit that inherits from the base dockerd configuration.
+# The base configuration already specifies an 'ExecStart=...' command. The first directive
+# here is to clear out that command inherited from the base configuration. Without this,
+# the command from the base configuration and the command specified here are treated as
+# a sequence of commands, which is not the desired behavior, nor is it valid -- systemd
+# will catch this invalid input and refuse to start the service with an error like:
+#  Service has more than one ExecStart= setting, which is only allowed for Type=oneshot services.
+
+# NOTE: default-ulimit=nofile is set to an arbitrary number for consistency with other
+# container runtimes. If left unlimited, it may result in OOM issues with MySQL.
+ExecStart=
+ExecStart=/usr/bin/dockerd -H tcp://0.0.0.0:2376 \
+	-H fd:// --containerd=/run/containerd/containerd.sock \
+	-H unix:///var/run/docker.sock \
+	--default-ulimit=nofile=1048576:1048576 \
+	--tlsverify \
+	--tlscacert /etc/docker/ca.pem \
+	--tlscert /etc/docker/server.pem \
+	--tlskey /etc/docker/server-key.pem --label provider=docker --insecure-registry 10.96.0.0/12 
+ExecReload=/bin/kill -s HUP \$MAINPID
+
+# Having non-zero Limit*s causes performance problems due to accounting overhead
+# in the kernel. We recommend using cgroups to do container-local accounting.
+LimitNOFILE=infinity
+LimitNPROC=infinity
+LimitCORE=infinity
+
+# Uncomment TasksMax if your systemd version supports it.
+# Only systemd 226 and above support this version.
+TasksMax=infinity
+TimeoutStartSec=0
+
+# set delegate yes so that systemd does not reset the cgroups of docker containers
+Delegate=yes
+
+# kill only the docker process, not all processes in the cgroup
+KillMode=process
+OOMScoreAdjust=-500
+
+[Install]
+WantedBy=multi-user.target
+" | sudo tee /lib/systemd/system/docker.service.new
+I0319 21:34:18.820301  102267 main.go:144] libmachine: SSH cmd err, output: <nil>: [Unit]
+Description=Docker Application Container Engine
+Documentation=https://docs.docker.com
+After=network-online.target nss-lookup.target docker.socket firewalld.service containerd.service time-set.target
+Wants=network-online.target containerd.service
+Requires=docker.socket
+StartLimitBurst=3
+StartLimitIntervalSec=60
+
+[Service]
+Type=notify
+Restart=always
+
+
+
+# This file is a systemd drop-in unit that inherits from the base dockerd configuration.
+# The base configuration already specifies an 'ExecStart=...' command. The first directive
+# here is to clear out that command inherited from the base configuration. Without this,
+# the command from the base configuration and the command specified here are treated as
+# a sequence of commands, which is not the desired behavior, nor is it valid -- systemd
+# will catch this invalid input and refuse to start the service with an error like:
+#  Service has more than one ExecStart= setting, which is only allowed for Type=oneshot services.
+
+# NOTE: default-ulimit=nofile is set to an arbitrary number for consistency with other
+# container runtimes. If left unlimited, it may result in OOM issues with MySQL.
+ExecStart=
+ExecStart=/usr/bin/dockerd -H tcp://0.0.0.0:2376 	-H fd:// --containerd=/run/containerd/containerd.sock 	-H unix:///var/run/docker.sock 	--default-ulimit=nofile=1048576:1048576 	--tlsverify 	--tlscacert /etc/docker/ca.pem 	--tlscert /etc/docker/server.pem 	--tlskey /etc/docker/server-key.pem --label provider=docker --insecure-registry 10.96.0.0/12 
+ExecReload=/bin/kill -s HUP $MAINPID
+
+# Having non-zero Limit*s causes performance problems due to accounting overhead
+# in the kernel. We recommend using cgroups to do container-local accounting.
+LimitNOFILE=infinity
+LimitNPROC=infinity
+LimitCORE=infinity
+
+# Uncomment TasksMax if your systemd version supports it.
+# Only systemd 226 and above support this version.
+TasksMax=infinity
+TimeoutStartSec=0
+
+# set delegate yes so that systemd does not reset the cgroups of docker containers
+Delegate=yes
+
+# kill only the docker process, not all processes in the cgroup
+KillMode=process
+OOMScoreAdjust=-500
+
+[Install]
+WantedBy=multi-user.target
+
+I0319 21:34:18.820396  102267 cli_runner.go:164] Run: docker container inspect -f "'{{(index (index .NetworkSettings.Ports "22/tcp") 0).HostPort}}'" minikube
+I0319 21:34:18.849440  102267 main.go:144] libmachine: Using SSH client type: native
+I0319 21:34:18.849869  102267 main.go:144] libmachine: &{{{<nil> 0 [] [] []} docker [0x906340] 0x908fe0 <nil>  [] 0s} 127.0.0.1 32778 <nil> <nil>}
+I0319 21:34:18.849893  102267 main.go:144] libmachine: About to run SSH command:
+sudo diff -u /lib/systemd/system/docker.service /lib/systemd/system/docker.service.new || { sudo mv /lib/systemd/system/docker.service.new /lib/systemd/system/docker.service; sudo systemctl -f daemon-reload && sudo systemctl -f enable docker && sudo systemctl -f restart docker; }
+I0319 21:34:20.227663  102267 main.go:144] libmachine: SSH cmd err, output: <nil>: --- /lib/systemd/system/docker.service	2026-01-26 19:24:35.000000000 +0000
++++ /lib/systemd/system/docker.service.new	2026-03-19 16:04:18.817553716 +0000
+@@ -9,23 +9,34 @@
+ 
+ [Service]
+ Type=notify
+-# the default is not to use systemd for cgroups because the delegate issues still
+-# exists and systemd currently does not support the cgroup feature set required
+-# for containers run by docker
+-ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
+-ExecReload=/bin/kill -s HUP $MAINPID
+-TimeoutStartSec=0
+-RestartSec=2
+ Restart=always
+ 
++
++
++# This file is a systemd drop-in unit that inherits from the base dockerd configuration.
++# The base configuration already specifies an 'ExecStart=...' command. The first directive
++# here is to clear out that command inherited from the base configuration. Without this,
++# the command from the base configuration and the command specified here are treated as
++# a sequence of commands, which is not the desired behavior, nor is it valid -- systemd
++# will catch this invalid input and refuse to start the service with an error like:
++#  Service has more than one ExecStart= setting, which is only allowed for Type=oneshot services.
++
++# NOTE: default-ulimit=nofile is set to an arbitrary number for consistency with other
++# container runtimes. If left unlimited, it may result in OOM issues with MySQL.
++ExecStart=
++ExecStart=/usr/bin/dockerd -H tcp://0.0.0.0:2376 	-H fd:// --containerd=/run/containerd/containerd.sock 	-H unix:///var/run/docker.sock 	--default-ulimit=nofile=1048576:1048576 	--tlsverify 	--tlscacert /etc/docker/ca.pem 	--tlscert /etc/docker/server.pem 	--tlskey /etc/docker/server-key.pem --label provider=docker --insecure-registry 10.96.0.0/12 
++ExecReload=/bin/kill -s HUP $MAINPID
++
+ # Having non-zero Limit*s causes performance problems due to accounting overhead
+ # in the kernel. We recommend using cgroups to do container-local accounting.
++LimitNOFILE=infinity
+ LimitNPROC=infinity
+ LimitCORE=infinity
+ 
+-# Comment TasksMax if your systemd version does not support it.
+-# Only systemd 226 and above support this option.
++# Uncomment TasksMax if your systemd version supports it.
++# Only systemd 226 and above support this version.
+ TasksMax=infinity
++TimeoutStartSec=0
+ 
+ # set delegate yes so that systemd does not reset the cgroups of docker containers
+ Delegate=yes
+Synchronizing state of docker.service with SysV service script with /lib/systemd/systemd-sysv-install.
+Executing: /lib/systemd/systemd-sysv-install enable docker
+
+I0319 21:34:20.227693  102267 machine.go:99] duration metric: took 5.819738813s to provisionDockerMachine
+I0319 21:34:20.227709  102267 client.go:176] duration metric: took 9.633210358s to LocalClient.Create
+I0319 21:34:20.227725  102267 start.go:166] duration metric: took 9.633257988s to libmachine.API.Create "minikube"
+I0319 21:34:20.227733  102267 start.go:292] postStartSetup for "minikube" (driver="docker")
+I0319 21:34:20.227749  102267 start.go:321] creating required directories: [/etc/kubernetes/addons /etc/kubernetes/manifests /var/tmp/minikube /var/lib/minikube /var/lib/minikube/certs /var/lib/minikube/images /var/lib/minikube/binaries /tmp/gvisor /usr/share/ca-certificates /etc/ssl/certs]
+I0319 21:34:20.227845  102267 ssh_runner.go:194] Run: sudo mkdir -p /etc/kubernetes/addons /etc/kubernetes/manifests /var/tmp/minikube /var/lib/minikube /var/lib/minikube/certs /var/lib/minikube/images /var/lib/minikube/binaries /tmp/gvisor /usr/share/ca-certificates /etc/ssl/certs
+I0319 21:34:20.227918  102267 cli_runner.go:164] Run: docker container inspect -f "'{{(index (index .NetworkSettings.Ports "22/tcp") 0).HostPort}}'" minikube
+I0319 21:34:20.261481  102267 sshutil.go:53] new ssh client: &{IP:127.0.0.1 Port:32778 SSHKeyPath:/home/black-berry/.minikube/machines/minikube/id_rsa Username:docker}
+I0319 21:34:20.396424  102267 ssh_runner.go:194] Run: cat /etc/os-release
+I0319 21:34:20.401616  102267 main.go:144] libmachine: Couldn't set key VERSION_CODENAME, no corresponding struct field found
+I0319 21:34:20.401644  102267 info.go:137] Remote host: Debian GNU/Linux 12 (bookworm)
+I0319 21:34:20.401811  102267 filesync.go:125] Scanning /home/black-berry/.minikube/addons for local assets ...
+I0319 21:34:20.402078  102267 filesync.go:125] Scanning /home/black-berry/.minikube/files for local assets ...
+I0319 21:34:20.402239  102267 start.go:295] duration metric: took 174.497674ms for postStartSetup
+I0319 21:34:20.402641  102267 cli_runner.go:164] Run: docker container inspect -f "{{range .NetworkSettings.Networks}}{{.IPAddress}},{{.GlobalIPv6Address}}{{end}}" minikube
+I0319 21:34:20.429335  102267 profile.go:143] Saving config to /home/black-berry/.minikube/profiles/minikube/config.json ...
+I0319 21:34:20.429705  102267 ssh_runner.go:194] Run: sh -c "df -h /var | awk 'NR==2{print $5}'"
+I0319 21:34:20.429755  102267 cli_runner.go:164] Run: docker container inspect -f "'{{(index (index .NetworkSettings.Ports "22/tcp") 0).HostPort}}'" minikube
+I0319 21:34:20.459031  102267 sshutil.go:53] new ssh client: &{IP:127.0.0.1 Port:32778 SSHKeyPath:/home/black-berry/.minikube/machines/minikube/id_rsa Username:docker}
+I0319 21:34:20.561089  102267 ssh_runner.go:194] Run: sh -c "df -BG /var | awk 'NR==2{print $4}'"
+I0319 21:34:20.568598  102267 start.go:127] duration metric: took 9.975214898s to createHost
+I0319 21:34:20.568614  102267 start.go:82] releasing machines lock for "minikube", held for 9.975315305s
+I0319 21:34:20.568708  102267 cli_runner.go:164] Run: docker container inspect -f "{{range .NetworkSettings.Networks}}{{.IPAddress}},{{.GlobalIPv6Address}}{{end}}" minikube
+I0319 21:34:20.589193  102267 ssh_runner.go:194] Run: cat /version.json
+I0319 21:34:20.589238  102267 ssh_runner.go:194] Run: curl -sS -m 2 https://registry.k8s.io/
+I0319 21:34:20.589241  102267 cli_runner.go:164] Run: docker container inspect -f "'{{(index (index .NetworkSettings.Ports "22/tcp") 0).HostPort}}'" minikube
+I0319 21:34:20.589300  102267 cli_runner.go:164] Run: docker container inspect -f "'{{(index (index .NetworkSettings.Ports "22/tcp") 0).HostPort}}'" minikube
+I0319 21:34:20.614744  102267 sshutil.go:53] new ssh client: &{IP:127.0.0.1 Port:32778 SSHKeyPath:/home/black-berry/.minikube/machines/minikube/id_rsa Username:docker}
+I0319 21:34:20.619602  102267 sshutil.go:53] new ssh client: &{IP:127.0.0.1 Port:32778 SSHKeyPath:/home/black-berry/.minikube/machines/minikube/id_rsa Username:docker}
+I0319 21:34:20.731280  102267 ssh_runner.go:194] Run: systemctl --version
+I0319 21:34:21.250440  102267 ssh_runner.go:194] Run: sh -c "stat /etc/cni/net.d/*loopback.conf*"
+W0319 21:34:21.259978  102267 cni.go:208] loopback cni configuration skipped: "/etc/cni/net.d/*loopback.conf*" not found
+I0319 21:34:21.260083  102267 ssh_runner.go:194] Run: sudo find /etc/cni/net.d -maxdepth 1 -type f ( ( -name *bridge* -or -name *podman* ) -and -not -name *.mk_disabled ) -printf "%p, " -exec sh -c "sudo mv {} {}.mk_disabled" ;
+I0319 21:34:21.299657  102267 cni.go:261] disabled [/etc/cni/net.d/87-podman-bridge.conflist, /etc/cni/net.d/10-crio-bridge.conflist.disabled] bridge cni config(s)
+I0319 21:34:21.299681  102267 start.go:497] detecting cgroup driver to use...
+I0319 21:34:21.299724  102267 detect.go:178] detected "systemd" cgroup driver on host os
+I0319 21:34:21.300111  102267 ssh_runner.go:194] Run: /bin/bash -c "sudo mkdir -p /etc && printf %s "runtime-endpoint: unix:///run/containerd/containerd.sock
+" | sudo tee /etc/crictl.yaml"
+I0319 21:34:21.323492  102267 ssh_runner.go:194] Run: sh -c "sudo sed -i -r 's|^( *)sandbox_image = .*$|\1sandbox_image = "registry.k8s.io/pause:3.10.1"|' /etc/containerd/config.toml"
+I0319 21:34:21.341225  102267 ssh_runner.go:194] Run: sh -c "sudo sed -i -r 's|^( *)restrict_oom_score_adj = .*$|\1restrict_oom_score_adj = false|' /etc/containerd/config.toml"
+I0319 21:34:21.356788  102267 containerd.go:146] configuring containerd to use "systemd" as cgroup driver...
+I0319 21:34:21.356870  102267 ssh_runner.go:194] Run: sh -c "sudo sed -i -r 's|^( *)SystemdCgroup = .*$|\1SystemdCgroup = true|g' /etc/containerd/config.toml"
+I0319 21:34:21.372012  102267 ssh_runner.go:194] Run: sh -c "sudo sed -i 's|"io.containerd.runtime.v1.linux"|"io.containerd.runc.v2"|g' /etc/containerd/config.toml"
+I0319 21:34:21.386582  102267 ssh_runner.go:194] Run: sh -c "sudo sed -i '/systemd_cgroup/d' /etc/containerd/config.toml"
+I0319 21:34:21.400984  102267 ssh_runner.go:194] Run: sh -c "sudo sed -i 's|"io.containerd.runc.v1"|"io.containerd.runc.v2"|g' /etc/containerd/config.toml"
+I0319 21:34:21.420299  102267 ssh_runner.go:194] Run: sh -c "sudo rm -rf /etc/cni/net.mk"
+I0319 21:34:21.436455  102267 ssh_runner.go:194] Run: sh -c "sudo sed -i -r 's|^( *)conf_dir = .*$|\1conf_dir = "/etc/cni/net.d"|g' /etc/containerd/config.toml"
+I0319 21:34:21.452489  102267 ssh_runner.go:194] Run: sh -c "sudo sed -i '/^ *enable_unprivileged_ports = .*/d' /etc/containerd/config.toml"
+I0319 21:34:21.464982  102267 ssh_runner.go:194] Run: sh -c "sudo sed -i -r 's|^( *)\[plugins."io.containerd.grpc.v1.cri"\]|&\n\1  enable_unprivileged_ports = true|' /etc/containerd/config.toml"
+I0319 21:34:21.475488  102267 ssh_runner.go:194] Run: sudo sysctl net.bridge.bridge-nf-call-iptables
+I0319 21:34:21.486311  102267 ssh_runner.go:194] Run: sudo sh -c "echo 1 > /proc/sys/net/ipv4/ip_forward"
+I0319 21:34:21.496362  102267 ssh_runner.go:194] Run: sudo systemctl daemon-reload
+I0319 21:34:21.613323  102267 ssh_runner.go:194] Run: sudo systemctl restart containerd
+I0319 21:34:21.744621  102267 start.go:497] detecting cgroup driver to use...
+I0319 21:34:21.744660  102267 detect.go:178] detected "systemd" cgroup driver on host os
+I0319 21:34:21.744726  102267 ssh_runner.go:194] Run: sudo systemctl cat docker.service
+I0319 21:34:21.764129  102267 ssh_runner.go:194] Run: sudo systemctl is-active --quiet service containerd
+I0319 21:34:21.778841  102267 ssh_runner.go:194] Run: sudo systemctl stop -f containerd
+I0319 21:34:21.794376  102267 ssh_runner.go:194] Run: sudo systemctl is-active --quiet service containerd
+I0319 21:34:21.808161  102267 ssh_runner.go:194] Run: sudo systemctl is-active --quiet service crio
+I0319 21:34:21.828193  102267 ssh_runner.go:194] Run: /bin/bash -c "sudo mkdir -p /etc && printf %s "runtime-endpoint: unix:///var/run/cri-dockerd.sock
+" | sudo tee /etc/crictl.yaml"
+I0319 21:34:21.852720  102267 ssh_runner.go:194] Run: which cri-dockerd
+I0319 21:34:21.858541  102267 ssh_runner.go:194] Run: sudo mkdir -p /etc/systemd/system/cri-docker.service.d
+I0319 21:34:21.871323  102267 ssh_runner.go:361] scp memory --> /etc/systemd/system/cri-docker.service.d/10-cni.conf (192 bytes)
+I0319 21:34:21.891244  102267 ssh_runner.go:194] Run: sudo systemctl unmask docker.service
+I0319 21:34:22.029259  102267 ssh_runner.go:194] Run: sudo systemctl enable docker.socket
+I0319 21:34:22.128269  102267 docker.go:577] configuring docker to use "systemd" as cgroup driver...
+I0319 21:34:22.128354  102267 ssh_runner.go:361] scp memory --> /etc/docker/daemon.json (129 bytes)
+I0319 21:34:22.139834  102267 ssh_runner.go:194] Run: sudo systemctl reset-failed docker
+I0319 21:34:22.150088  102267 ssh_runner.go:194] Run: sudo systemctl daemon-reload
+I0319 21:34:22.235069  102267 ssh_runner.go:194] Run: sudo systemctl restart docker
+I0319 21:34:22.985727  102267 ssh_runner.go:194] Run: sudo systemctl is-active --quiet service docker
+I0319 21:34:23.011402  102267 ssh_runner.go:194] Run: sudo systemctl is-active --quiet service cri-docker.socket
+I0319 21:34:23.042861  102267 ssh_runner.go:194] Run: sudo systemctl is-active --quiet service cri-docker.service
+I0319 21:34:23.060333  102267 ssh_runner.go:194] Run: sudo systemctl unmask cri-docker.socket
+I0319 21:34:23.216259  102267 ssh_runner.go:194] Run: sudo systemctl enable cri-docker.socket
+I0319 21:34:23.325673  102267 ssh_runner.go:194] Run: sudo systemctl daemon-reload
+I0319 21:34:23.404917  102267 ssh_runner.go:194] Run: sudo systemctl restart cri-docker.socket
+I0319 21:34:23.427992  102267 ssh_runner.go:194] Run: sudo systemctl reset-failed cri-docker.service
+I0319 21:34:23.440141  102267 ssh_runner.go:194] Run: sudo systemctl daemon-reload
+I0319 21:34:23.539712  102267 ssh_runner.go:194] Run: sudo systemctl restart cri-docker.service
+I0319 21:34:23.671372  102267 ssh_runner.go:194] Run: sudo systemctl is-active --quiet service cri-docker.service
+I0319 21:34:23.683961  102267 start.go:554] Will wait 60s for socket path /var/run/cri-dockerd.sock
+I0319 21:34:23.684045  102267 ssh_runner.go:194] Run: stat /var/run/cri-dockerd.sock
+I0319 21:34:23.689083  102267 start.go:575] Will wait 60s for crictl version
+I0319 21:34:23.689156  102267 ssh_runner.go:194] Run: which crictl
+I0319 21:34:23.694475  102267 ssh_runner.go:194] Run: sudo /usr/local/bin/crictl version
+I0319 21:34:23.771473  102267 start.go:591] Version:  0.1.0
+RuntimeName:  docker
+RuntimeVersion:  29.2.0
+RuntimeApiVersion:  v1
+I0319 21:34:23.771526  102267 ssh_runner.go:194] Run: docker version --format {{.Server.Version}}
+I0319 21:34:23.836783  102267 ssh_runner.go:194] Run: docker version --format {{.Server.Version}}
+I0319 21:34:23.861169  102267 out.go:252] 🐳  Preparing Kubernetes v1.35.0 on Docker 29.2.0 ...
+I0319 21:34:23.861312  102267 cli_runner.go:164] Run: docker network inspect minikube --format "{"Name": "{{.Name}}","Driver": "{{.Driver}}","Subnet": "{{range .IPAM.Config}}{{.Subnet}}{{end}}","Gateway": "{{range .IPAM.Config}}{{.Gateway}}{{end}}","MTU": {{if (index .Options "com.docker.network.driver.mtu")}}{{(index .Options "com.docker.network.driver.mtu")}}{{else}}0{{end}}, "ContainerIPs": [{{range $k,$v := .Containers }}"{{$v.IPv4Address}}",{{end}}]}"
+I0319 21:34:23.888299  102267 ssh_runner.go:194] Run: grep 192.168.49.1	host.minikube.internal$ /etc/hosts
+I0319 21:34:23.894241  102267 ssh_runner.go:194] Run: /bin/bash -c "{ grep -v $'\thost.minikube.internal$' "/etc/hosts"; echo "192.168.49.1	host.minikube.internal"; } > /tmp/h.$$; sudo cp /tmp/h.$$ "/etc/hosts""
+I0319 21:34:23.910095  102267 kubeadm.go:883] updating cluster {Name:minikube KeepContext:false EmbedCerts:false MinikubeISO: KicBaseImage:gcr.io/k8s-minikube/kicbase:v0.0.49@sha256:e6daddbb1dc09ccd195c5605f65e2d38406c36ef36c5a492ffe805d9d36f4945 Memory:2048 CPUs:2 DiskSize:20000 Driver:docker HyperkitVpnKitSock: HyperkitVSockPorts:[] DockerEnv:[] ContainerVolumeMounts:[] InsecureRegistry:[] RegistryMirror:[] HostOnlyCIDR:192.168.59.1/24 HypervVirtualSwitch: HypervUseExternalSwitch:false HypervExternalAdapter: KVMNetwork:default KVMQemuURI:qemu:///system KVMGPU:false KVMHidden:false KVMNUMACount:1 APIServerPort:8443 DockerOpt:[] DisableDriverMounts:false NFSShare:[] NFSSharesRoot:/nfsshares UUID: NoVTXCheck:false DNSProxy:false HostDNSResolver:true HostOnlyNicType:virtio NatNicType:virtio SSHIPAddress: SSHUser:root SSHKey: SSHPort:22 KubernetesConfig:{KubernetesVersion:v1.35.0 ClusterName:minikube Namespace:default APIServerHAVIP: APIServerName:minikubeCA APIServerNames:[] APIServerIPs:[] DNSDomain:cluster.local ContainerRuntime:docker CRISocket: NetworkPlugin:cni FeatureGates: ServiceCIDR:10.96.0.0/12 ImageRepository: LoadBalancerStartIP: LoadBalancerEndIP: CustomIngressCert: RegistryAliases: ExtraOptions:[] ShouldLoadCachedImages:true EnableDefaultCNI:false CNI:} Nodes:[{Name: IP:192.168.49.2 Port:8443 KubernetesVersion:v1.35.0 ContainerRuntime:docker ControlPlane:true Worker:true}] Addons:map[] CustomAddonImages:map[] CustomAddonRegistries:map[] VerifyComponents:map[apiserver:true system_pods:true] StartHostTimeout:6m0s ScheduledStop:<nil> ExposedPorts:[] ListenAddress: Network: Subnet: MultiNodeRequested:false ExtraDisks:0 CertExpiration:26280h0m0s MountString: Mount9PVersion:9p2000.L MountGID:docker MountIP: MountMSize:262144 MountOptions:[] MountPort:0 MountType:9p MountUID:docker BinaryMirror: DisableOptimizations:false DisableMetrics:false DisableCoreDNSLog:false CustomQemuFirmwarePath: SocketVMnetClientPath: SocketVMnetPath: StaticIP: SSHAuthSock: SSHAgentPID:0 GPUs: AutoPauseInterval:1m0s Rosetta:false} ...
+I0319 21:34:23.910219  102267 preload.go:187] Checking if preload exists for k8s version v1.35.0 and runtime docker
+I0319 21:34:23.910284  102267 ssh_runner.go:194] Run: docker images --format {{.Repository}}:{{.Tag}}
+I0319 21:34:23.940080  102267 docker.go:693] Got preloaded images: -- stdout --
+registry.k8s.io/kube-apiserver:v1.35.0
+registry.k8s.io/kube-controller-manager:v1.35.0
+registry.k8s.io/kube-proxy:v1.35.0
+registry.k8s.io/kube-scheduler:v1.35.0
+registry.k8s.io/etcd:3.6.6-0
+registry.k8s.io/coredns/coredns:v1.13.1
+registry.k8s.io/pause:3.10.1
+gcr.io/k8s-minikube/storage-provisioner:v5
+
+-- /stdout --
+I0319 21:34:23.940095  102267 docker.go:623] Images already preloaded, skipping extraction
+I0319 21:34:23.940187  102267 ssh_runner.go:194] Run: docker images --format {{.Repository}}:{{.Tag}}
+I0319 21:34:23.967065  102267 docker.go:693] Got preloaded images: -- stdout --
+registry.k8s.io/kube-apiserver:v1.35.0
+registry.k8s.io/kube-controller-manager:v1.35.0
+registry.k8s.io/kube-proxy:v1.35.0
+registry.k8s.io/kube-scheduler:v1.35.0
+registry.k8s.io/etcd:3.6.6-0
+registry.k8s.io/coredns/coredns:v1.13.1
+registry.k8s.io/pause:3.10.1
+gcr.io/k8s-minikube/storage-provisioner:v5
+
+-- /stdout --
+I0319 21:34:23.967082  102267 cache_images.go:85] Images are preloaded, skipping loading
+I0319 21:34:23.967091  102267 kubeadm.go:934] updating node { 192.168.49.2 8443 v1.35.0 docker true true} ...
+I0319 21:34:23.967219  102267 kubeadm.go:946] kubelet [Unit]
+Wants=docker.socket
+
+[Service]
+ExecStart=
+ExecStart=/var/lib/minikube/binaries/v1.35.0/kubelet --bootstrap-kubeconfig=/etc/kubernetes/bootstrap-kubelet.conf --config=/var/lib/kubelet/config.yaml --hostname-override=minikube --kubeconfig=/etc/kubernetes/kubelet.conf --node-ip=192.168.49.2
+
+[Install]
+ config:
+{KubernetesVersion:v1.35.0 ClusterName:minikube Namespace:default APIServerHAVIP: APIServerName:minikubeCA APIServerNames:[] APIServerIPs:[] DNSDomain:cluster.local ContainerRuntime:docker CRISocket: NetworkPlugin:cni FeatureGates: ServiceCIDR:10.96.0.0/12 ImageRepository: LoadBalancerStartIP: LoadBalancerEndIP: CustomIngressCert: RegistryAliases: ExtraOptions:[] ShouldLoadCachedImages:true EnableDefaultCNI:false CNI:}
+I0319 21:34:23.967285  102267 ssh_runner.go:194] Run: docker info --format {{.CgroupDriver}}
+I0319 21:34:24.171938  102267 cni.go:83] Creating CNI manager for ""
+I0319 21:34:24.171975  102267 cni.go:157] "docker" driver + "docker" container runtime found on kubernetes v1.24+, recommending bridge
+I0319 21:34:24.172231  102267 kubeadm.go:84] Using pod CIDR: 10.244.0.0/16
+I0319 21:34:24.172265  102267 kubeadm.go:196] kubeadm options: {CertDir:/var/lib/minikube/certs ServiceCIDR:10.96.0.0/12 PodSubnet:10.244.0.0/16 AdvertiseAddress:192.168.49.2 APIServerPort:8443 KubernetesVersion:v1.35.0 EtcdDataDir:/var/lib/minikube/etcd EtcdExtraArgs:map[] ClusterName:minikube NodeName:minikube DNSDomain:cluster.local CRISocket:/var/run/cri-dockerd.sock ImageRepository: ComponentOptions:[{Component:apiServer ExtraArgs:map[enable-admission-plugins:NamespaceLifecycle,LimitRanger,ServiceAccount,DefaultStorageClass,DefaultTolerationSeconds,NodeRestriction,MutatingAdmissionWebhook,ValidatingAdmissionWebhook,ResourceQuota] Pairs:map[certSANs:["127.0.0.1", "localhost", "192.168.49.2"]]} {Component:controllerManager ExtraArgs:map[allocate-node-cidrs:true leader-elect:false] Pairs:map[]} {Component:scheduler ExtraArgs:map[leader-elect:false] Pairs:map[]}] FeatureArgs:map[] NodeIP:192.168.49.2 CgroupDriver:systemd ClientCAFile:/var/lib/minikube/certs/ca.crt StaticPodPath:/etc/kubernetes/manifests ControlPlaneAddress:control-plane.minikube.internal KubeProxyOptions:map[] ResolvConfSearchRegression:false KubeletConfigOpts:map[containerRuntimeEndpoint:unix:///var/run/cri-dockerd.sock hairpinMode:hairpin-veth runtimeRequestTimeout:15m] PrependCriSocketUnix:true}
+I0319 21:34:24.172440  102267 kubeadm.go:202] kubeadm config:
+apiVersion: kubeadm.k8s.io/v1beta4
+kind: InitConfiguration
+localAPIEndpoint:
+  advertiseAddress: 192.168.49.2
+  bindPort: 8443
+bootstrapTokens:
+  - groups:
+      - system:bootstrappers:kubeadm:default-node-token
+    ttl: 24h0m0s
+    usages:
+      - signing
+      - authentication
+nodeRegistration:
+  criSocket: unix:///var/run/cri-dockerd.sock
+  name: "minikube"
+  kubeletExtraArgs:
+    - name: "node-ip"
+      value: "192.168.49.2"
+  taints: []
+---
+apiVersion: kubeadm.k8s.io/v1beta4
+kind: ClusterConfiguration
+apiServer:
+  certSANs: ["127.0.0.1", "localhost", "192.168.49.2"]
+  extraArgs:
+    - name: "enable-admission-plugins"
+      value: "NamespaceLifecycle,LimitRanger,ServiceAccount,DefaultStorageClass,DefaultTolerationSeconds,NodeRestriction,MutatingAdmissionWebhook,ValidatingAdmissionWebhook,ResourceQuota"
+controllerManager:
+  extraArgs:
+    - name: "allocate-node-cidrs"
+      value: "true"
+    - name: "leader-elect"
+      value: "false"
+scheduler:
+  extraArgs:
+    - name: "leader-elect"
+      value: "false"
+certificatesDir: /var/lib/minikube/certs
+clusterName: mk
+controlPlaneEndpoint: control-plane.minikube.internal:8443
+etcd:
+  local:
+    dataDir: /var/lib/minikube/etcd
+kubernetesVersion: v1.35.0
+networking:
+  dnsDomain: cluster.local
+  podSubnet: "10.244.0.0/16"
+  serviceSubnet: 10.96.0.0/12
+---
+apiVersion: kubelet.config.k8s.io/v1beta1
+kind: KubeletConfiguration
+authentication:
+  x509:
+    clientCAFile: /var/lib/minikube/certs/ca.crt
+cgroupDriver: systemd
+containerRuntimeEndpoint: unix:///var/run/cri-dockerd.sock
+hairpinMode: hairpin-veth
+runtimeRequestTimeout: 15m
+clusterDomain: "cluster.local"
+# disable disk resource management by default
+imageGCHighThresholdPercent: 100
+evictionHard:
+  nodefs.available: "0%"
+  nodefs.inodesFree: "0%"
+  imagefs.available: "0%"
+failSwapOn: false
+staticPodPath: /etc/kubernetes/manifests
+---
+apiVersion: kubeproxy.config.k8s.io/v1alpha1
+kind: KubeProxyConfiguration
+clusterCIDR: "10.244.0.0/16"
+metricsBindAddress: 0.0.0.0:10249
+conntrack:
+  maxPerCore: 0
+# Skip setting "net.netfilter.nf_conntrack_tcp_timeout_established"
+  tcpEstablishedTimeout: 0s
+# Skip setting "net.netfilter.nf_conntrack_tcp_timeout_close"
+  tcpCloseWaitTimeout: 0s
+
+I0319 21:34:24.172530  102267 ssh_runner.go:194] Run: sudo ls /var/lib/minikube/binaries/v1.35.0
+I0319 21:34:24.185491  102267 binaries.go:50] Found k8s binaries, skipping transfer
+I0319 21:34:24.185572  102267 ssh_runner.go:194] Run: sudo mkdir -p /etc/systemd/system/kubelet.service.d /lib/systemd/system /var/tmp/minikube
+I0319 21:34:24.197546  102267 ssh_runner.go:361] scp memory --> /etc/systemd/system/kubelet.service.d/10-kubeadm.conf (307 bytes)
+I0319 21:34:24.217411  102267 ssh_runner.go:361] scp memory --> /lib/systemd/system/kubelet.service (352 bytes)
+I0319 21:34:24.236855  102267 ssh_runner.go:361] scp memory --> /var/tmp/minikube/kubeadm.yaml.new (2208 bytes)
+I0319 21:34:24.256085  102267 ssh_runner.go:194] Run: grep 192.168.49.2	control-plane.minikube.internal$ /etc/hosts
+I0319 21:34:24.261873  102267 ssh_runner.go:194] Run: /bin/bash -c "{ grep -v $'\tcontrol-plane.minikube.internal$' "/etc/hosts"; echo "192.168.49.2	control-plane.minikube.internal"; } > /tmp/h.$$; sudo cp /tmp/h.$$ "/etc/hosts""
+I0319 21:34:24.277562  102267 ssh_runner.go:194] Run: sudo systemctl daemon-reload
+I0319 21:34:24.380444  102267 ssh_runner.go:194] Run: sudo systemctl start kubelet
+I0319 21:34:24.397167  102267 certs.go:67] Setting up /home/black-berry/.minikube/profiles/minikube for IP: 192.168.49.2
+I0319 21:34:24.397176  102267 certs.go:193] generating shared ca certs ...
+I0319 21:34:24.397187  102267 certs.go:225] acquiring lock for ca certs: {Name:mkd60e6d585821850601a5199f05a1bdd9928420 Timeout:1m0s Delay:500ms}
+I0319 21:34:24.397282  102267 certs.go:234] skipping valid "minikubeCA" ca cert: /home/black-berry/.minikube/ca.key
+I0319 21:34:24.401713  102267 certs.go:234] skipping valid "proxyClientCA" ca cert: /home/black-berry/.minikube/proxy-client-ca.key
+I0319 21:34:24.401722  102267 certs.go:255] generating profile certs ...
+I0319 21:34:24.401775  102267 certs.go:362] generating signed profile cert for "minikube-user": /home/black-berry/.minikube/profiles/minikube/client.key
+I0319 21:34:24.401790  102267 crypto.go:70] Generating cert /home/black-berry/.minikube/profiles/minikube/client.crt with IP's: []
+I0319 21:34:24.565070  102267 crypto.go:158] Writing cert to /home/black-berry/.minikube/profiles/minikube/client.crt ...
+I0319 21:34:24.565083  102267 lock.go:60] WriteFile acquiring /home/black-berry/.minikube/profiles/minikube/client.crt: {Name:mk6668def4ec0987b162a7785c7ce7f54c9ba802 Timeout:1m0s Delay:500ms}
+I0319 21:34:24.565186  102267 crypto.go:166] Writing key to /home/black-berry/.minikube/profiles/minikube/client.key ...
+I0319 21:34:24.565191  102267 lock.go:60] WriteFile acquiring /home/black-berry/.minikube/profiles/minikube/client.key: {Name:mka1114ecec7eadbab8b99ee2d929cb5cd44147f Timeout:1m0s Delay:500ms}
+I0319 21:34:24.565243  102267 certs.go:362] generating signed profile cert for "minikube": /home/black-berry/.minikube/profiles/minikube/apiserver.key.7fb57e3c
+I0319 21:34:24.565250  102267 crypto.go:70] Generating cert /home/black-berry/.minikube/profiles/minikube/apiserver.crt.7fb57e3c with IP's: [10.96.0.1 127.0.0.1 10.0.0.1 192.168.49.2]
+I0319 21:34:24.586430  102267 crypto.go:158] Writing cert to /home/black-berry/.minikube/profiles/minikube/apiserver.crt.7fb57e3c ...
+I0319 21:34:24.586435  102267 lock.go:60] WriteFile acquiring /home/black-berry/.minikube/profiles/minikube/apiserver.crt.7fb57e3c: {Name:mka94186f8cd46f21898450dc6bca81224b66247 Timeout:1m0s Delay:500ms}
+I0319 21:34:24.586486  102267 crypto.go:166] Writing key to /home/black-berry/.minikube/profiles/minikube/apiserver.key.7fb57e3c ...
+I0319 21:34:24.586489  102267 lock.go:60] WriteFile acquiring /home/black-berry/.minikube/profiles/minikube/apiserver.key.7fb57e3c: {Name:mkfcc9b3f642df91f65da1c99ea97b9a187ddeb5 Timeout:1m0s Delay:500ms}
+I0319 21:34:24.586522  102267 certs.go:380] copying /home/black-berry/.minikube/profiles/minikube/apiserver.crt.7fb57e3c -> /home/black-berry/.minikube/profiles/minikube/apiserver.crt
+I0319 21:34:24.586573  102267 certs.go:384] copying /home/black-berry/.minikube/profiles/minikube/apiserver.key.7fb57e3c -> /home/black-berry/.minikube/profiles/minikube/apiserver.key
+I0319 21:34:24.586610  102267 certs.go:362] generating signed profile cert for "aggregator": /home/black-berry/.minikube/profiles/minikube/proxy-client.key
+I0319 21:34:24.586617  102267 crypto.go:70] Generating cert /home/black-berry/.minikube/profiles/minikube/proxy-client.crt with IP's: []
+I0319 21:34:24.629818  102267 crypto.go:158] Writing cert to /home/black-berry/.minikube/profiles/minikube/proxy-client.crt ...
+I0319 21:34:24.629823  102267 lock.go:60] WriteFile acquiring /home/black-berry/.minikube/profiles/minikube/proxy-client.crt: {Name:mk2025e54f508dc9b334d566d24eded49e2ce81c Timeout:1m0s Delay:500ms}
+I0319 21:34:24.629872  102267 crypto.go:166] Writing key to /home/black-berry/.minikube/profiles/minikube/proxy-client.key ...
+I0319 21:34:24.629876  102267 lock.go:60] WriteFile acquiring /home/black-berry/.minikube/profiles/minikube/proxy-client.key: {Name:mkf22f7e8bc7d7478c4bcf3846eca81785889e34 Timeout:1m0s Delay:500ms}
+I0319 21:34:24.629973  102267 certs.go:482] found cert: /home/black-berry/.minikube/certs/ca-key.pem (1679 bytes)
+I0319 21:34:24.629993  102267 certs.go:482] found cert: /home/black-berry/.minikube/certs/ca.pem (1090 bytes)
+I0319 21:34:24.630009  102267 certs.go:482] found cert: /home/black-berry/.minikube/certs/cert.pem (1135 bytes)
+I0319 21:34:24.630025  102267 certs.go:482] found cert: /home/black-berry/.minikube/certs/key.pem (1675 bytes)
+I0319 21:34:24.630402  102267 ssh_runner.go:361] scp /home/black-berry/.minikube/ca.crt --> /var/lib/minikube/certs/ca.crt (1111 bytes)
+I0319 21:34:24.645194  102267 ssh_runner.go:361] scp /home/black-berry/.minikube/ca.key --> /var/lib/minikube/certs/ca.key (1679 bytes)
+I0319 21:34:24.658894  102267 ssh_runner.go:361] scp /home/black-berry/.minikube/proxy-client-ca.crt --> /var/lib/minikube/certs/proxy-client-ca.crt (1119 bytes)
+I0319 21:34:24.673114  102267 ssh_runner.go:361] scp /home/black-berry/.minikube/proxy-client-ca.key --> /var/lib/minikube/certs/proxy-client-ca.key (1679 bytes)
+I0319 21:34:24.687032  102267 ssh_runner.go:361] scp /home/black-berry/.minikube/profiles/minikube/apiserver.crt --> /var/lib/minikube/certs/apiserver.crt (1411 bytes)
+I0319 21:34:24.701493  102267 ssh_runner.go:361] scp /home/black-berry/.minikube/profiles/minikube/apiserver.key --> /var/lib/minikube/certs/apiserver.key (1675 bytes)
+I0319 21:34:24.718960  102267 ssh_runner.go:361] scp /home/black-berry/.minikube/profiles/minikube/proxy-client.crt --> /var/lib/minikube/certs/proxy-client.crt (1147 bytes)
+I0319 21:34:24.738606  102267 ssh_runner.go:361] scp /home/black-berry/.minikube/profiles/minikube/proxy-client.key --> /var/lib/minikube/certs/proxy-client.key (1675 bytes)
+I0319 21:34:24.757305  102267 ssh_runner.go:361] scp /home/black-berry/.minikube/ca.crt --> /usr/share/ca-certificates/minikubeCA.pem (1111 bytes)
+I0319 21:34:24.790200  102267 ssh_runner.go:361] scp memory --> /var/lib/minikube/kubeconfig (722 bytes)
+I0319 21:34:24.810168  102267 ssh_runner.go:194] Run: openssl version
+I0319 21:34:24.821164  102267 ssh_runner.go:194] Run: sudo test -s /usr/share/ca-certificates/minikubeCA.pem
+I0319 21:34:24.833398  102267 ssh_runner.go:194] Run: sudo ln -fs /usr/share/ca-certificates/minikubeCA.pem /etc/ssl/certs/minikubeCA.pem
+I0319 21:34:24.846927  102267 ssh_runner.go:194] Run: ls -la /usr/share/ca-certificates/minikubeCA.pem
+I0319 21:34:24.852642  102267 certs.go:526] hashing: -rw-r--r-- 1 root root 1111 Feb 17 10:37 /usr/share/ca-certificates/minikubeCA.pem
+I0319 21:34:24.852713  102267 ssh_runner.go:194] Run: openssl x509 -hash -noout -in /usr/share/ca-certificates/minikubeCA.pem
+I0319 21:34:24.906555  102267 ssh_runner.go:194] Run: sudo test -L /etc/ssl/certs/b5213941.0
+I0319 21:34:24.912872  102267 ssh_runner.go:194] Run: sudo ln -fs /etc/ssl/certs/minikubeCA.pem /etc/ssl/certs/b5213941.0
+I0319 21:34:24.921295  102267 ssh_runner.go:194] Run: stat /var/lib/minikube/certs/apiserver-kubelet-client.crt
+I0319 21:34:24.924388  102267 certs.go:398] 'apiserver-kubelet-client' cert doesn't exist, likely first start: stat /var/lib/minikube/certs/apiserver-kubelet-client.crt: Process exited with status 1
+stdout:
+
+stderr:
+stat: cannot statx '/var/lib/minikube/certs/apiserver-kubelet-client.crt': No such file or directory
+I0319 21:34:24.924415  102267 kubeadm.go:400] StartCluster: {Name:minikube KeepContext:false EmbedCerts:false MinikubeISO: KicBaseImage:gcr.io/k8s-minikube/kicbase:v0.0.49@sha256:e6daddbb1dc09ccd195c5605f65e2d38406c36ef36c5a492ffe805d9d36f4945 Memory:2048 CPUs:2 DiskSize:20000 Driver:docker HyperkitVpnKitSock: HyperkitVSockPorts:[] DockerEnv:[] ContainerVolumeMounts:[] InsecureRegistry:[] RegistryMirror:[] HostOnlyCIDR:192.168.59.1/24 HypervVirtualSwitch: HypervUseExternalSwitch:false HypervExternalAdapter: KVMNetwork:default KVMQemuURI:qemu:///system KVMGPU:false KVMHidden:false KVMNUMACount:1 APIServerPort:8443 DockerOpt:[] DisableDriverMounts:false NFSShare:[] NFSSharesRoot:/nfsshares UUID: NoVTXCheck:false DNSProxy:false HostDNSResolver:true HostOnlyNicType:virtio NatNicType:virtio SSHIPAddress: SSHUser:root SSHKey: SSHPort:22 KubernetesConfig:{KubernetesVersion:v1.35.0 ClusterName:minikube Namespace:default APIServerHAVIP: APIServerName:minikubeCA APIServerNames:[] APIServerIPs:[] DNSDomain:cluster.local ContainerRuntime:docker CRISocket: NetworkPlugin:cni FeatureGates: ServiceCIDR:10.96.0.0/12 ImageRepository: LoadBalancerStartIP: LoadBalancerEndIP: CustomIngressCert: RegistryAliases: ExtraOptions:[] ShouldLoadCachedImages:true EnableDefaultCNI:false CNI:} Nodes:[{Name: IP:192.168.49.2 Port:8443 KubernetesVersion:v1.35.0 ContainerRuntime:docker ControlPlane:true Worker:true}] Addons:map[] CustomAddonImages:map[] CustomAddonRegistries:map[] VerifyComponents:map[apiserver:true system_pods:true] StartHostTimeout:6m0s ScheduledStop:<nil> ExposedPorts:[] ListenAddress: Network: Subnet: MultiNodeRequested:false ExtraDisks:0 CertExpiration:26280h0m0s MountString: Mount9PVersion:9p2000.L MountGID:docker MountIP: MountMSize:262144 MountOptions:[] MountPort:0 MountType:9p MountUID:docker BinaryMirror: DisableOptimizations:false DisableMetrics:false DisableCoreDNSLog:false CustomQemuFirmwarePath: SocketVMnetClientPath: SocketVMnetPath: StaticIP: SSHAuthSock: SSHAgentPID:0 GPUs: AutoPauseInterval:1m0s Rosetta:false}
+I0319 21:34:24.924494  102267 ssh_runner.go:194] Run: docker ps --filter status=paused --filter=name=k8s_.*_(kube-system)_ --format={{.ID}}
+I0319 21:34:24.941799  102267 ssh_runner.go:194] Run: sudo ls /var/lib/kubelet/kubeadm-flags.env /var/lib/kubelet/config.yaml /var/lib/minikube/etcd
+I0319 21:34:24.950385  102267 ssh_runner.go:194] Run: sudo cp /var/tmp/minikube/kubeadm.yaml.new /var/tmp/minikube/kubeadm.yaml
+I0319 21:34:24.957712  102267 kubeadm.go:214] ignoring SystemVerification for kubeadm because of docker driver
+I0319 21:34:24.957756  102267 ssh_runner.go:194] Run: sudo ls -la /etc/kubernetes/admin.conf /etc/kubernetes/kubelet.conf /etc/kubernetes/controller-manager.conf /etc/kubernetes/scheduler.conf
+I0319 21:34:24.966122  102267 kubeadm.go:155] config check failed, skipping stale config cleanup: sudo ls -la /etc/kubernetes/admin.conf /etc/kubernetes/kubelet.conf /etc/kubernetes/controller-manager.conf /etc/kubernetes/scheduler.conf: Process exited with status 2
+stdout:
+
+stderr:
+ls: cannot access '/etc/kubernetes/admin.conf': No such file or directory
+ls: cannot access '/etc/kubernetes/kubelet.conf': No such file or directory
+ls: cannot access '/etc/kubernetes/controller-manager.conf': No such file or directory
+ls: cannot access '/etc/kubernetes/scheduler.conf': No such file or directory
+I0319 21:34:24.966132  102267 kubeadm.go:157] found existing configuration files:
+
+I0319 21:34:24.966172  102267 ssh_runner.go:194] Run: sudo grep https://control-plane.minikube.internal:8443 /etc/kubernetes/admin.conf
+I0319 21:34:24.973211  102267 kubeadm.go:163] "https://control-plane.minikube.internal:8443" may not be in /etc/kubernetes/admin.conf - will remove: sudo grep https://control-plane.minikube.internal:8443 /etc/kubernetes/admin.conf: Process exited with status 2
+stdout:
+
+stderr:
+grep: /etc/kubernetes/admin.conf: No such file or directory
+I0319 21:34:24.973265  102267 ssh_runner.go:194] Run: sudo rm -f /etc/kubernetes/admin.conf
+I0319 21:34:24.979374  102267 ssh_runner.go:194] Run: sudo grep https://control-plane.minikube.internal:8443 /etc/kubernetes/kubelet.conf
+I0319 21:34:24.988225  102267 kubeadm.go:163] "https://control-plane.minikube.internal:8443" may not be in /etc/kubernetes/kubelet.conf - will remove: sudo grep https://control-plane.minikube.internal:8443 /etc/kubernetes/kubelet.conf: Process exited with status 2
+stdout:
+
+stderr:
+grep: /etc/kubernetes/kubelet.conf: No such file or directory
+I0319 21:34:24.988273  102267 ssh_runner.go:194] Run: sudo rm -f /etc/kubernetes/kubelet.conf
+I0319 21:34:24.995189  102267 ssh_runner.go:194] Run: sudo grep https://control-plane.minikube.internal:8443 /etc/kubernetes/controller-manager.conf
+I0319 21:34:25.005306  102267 kubeadm.go:163] "https://control-plane.minikube.internal:8443" may not be in /etc/kubernetes/controller-manager.conf - will remove: sudo grep https://control-plane.minikube.internal:8443 /etc/kubernetes/controller-manager.conf: Process exited with status 2
+stdout:
+
+stderr:
+grep: /etc/kubernetes/controller-manager.conf: No such file or directory
+I0319 21:34:25.005347  102267 ssh_runner.go:194] Run: sudo rm -f /etc/kubernetes/controller-manager.conf
+I0319 21:34:25.011667  102267 ssh_runner.go:194] Run: sudo grep https://control-plane.minikube.internal:8443 /etc/kubernetes/scheduler.conf
+I0319 21:34:25.017673  102267 kubeadm.go:163] "https://control-plane.minikube.internal:8443" may not be in /etc/kubernetes/scheduler.conf - will remove: sudo grep https://control-plane.minikube.internal:8443 /etc/kubernetes/scheduler.conf: Process exited with status 2
+stdout:
+
+stderr:
+grep: /etc/kubernetes/scheduler.conf: No such file or directory
+I0319 21:34:25.017750  102267 ssh_runner.go:194] Run: sudo rm -f /etc/kubernetes/scheduler.conf
+I0319 21:34:25.023689  102267 ssh_runner.go:285] Start: sudo /bin/bash -c "env PATH="/var/lib/minikube/binaries/v1.35.0:$PATH" kubeadm init --config /var/tmp/minikube/kubeadm.yaml  --ignore-preflight-errors=DirAvailable--etc-kubernetes-manifests,DirAvailable--var-lib-minikube,DirAvailable--var-lib-minikube-etcd,FileAvailable--etc-kubernetes-manifests-kube-scheduler.yaml,FileAvailable--etc-kubernetes-manifests-kube-apiserver.yaml,FileAvailable--etc-kubernetes-manifests-kube-controller-manager.yaml,FileAvailable--etc-kubernetes-manifests-etcd.yaml,Port-10250,Swap,NumCPU,Mem,SystemVerification,FileContent--proc-sys-net-bridge-bridge-nf-call-iptables"
+I0319 21:34:25.169850  102267 kubeadm.go:318] [init] Using Kubernetes version: v1.35.0
+I0319 21:34:25.169989  102267 kubeadm.go:318] [preflight] Running pre-flight checks
+I0319 21:34:25.290354  102267 kubeadm.go:318] [preflight] The system verification failed. Printing the output from the verification:
+I0319 21:34:25.290438  102267 kubeadm.go:318] [0;37mKERNEL_VERSION[0m: [0;32m6.17.0-14-generic[0m
+I0319 21:34:25.290514  102267 kubeadm.go:318] [0;37mOS[0m: [0;32mLinux[0m
+I0319 21:34:25.290619  102267 kubeadm.go:318] [0;37mCGROUPS_CPU[0m: [0;32menabled[0m
+I0319 21:34:25.290712  102267 kubeadm.go:318] [0;37mCGROUPS_CPUSET[0m: [0;32menabled[0m
+I0319 21:34:25.290801  102267 kubeadm.go:318] [0;37mCGROUPS_DEVICES[0m: [0;32menabled[0m
+I0319 21:34:25.290895  102267 kubeadm.go:318] [0;37mCGROUPS_FREEZER[0m: [0;32menabled[0m
+I0319 21:34:25.290991  102267 kubeadm.go:318] [0;37mCGROUPS_MEMORY[0m: [0;32menabled[0m
+I0319 21:34:25.291034  102267 kubeadm.go:318] [0;37mCGROUPS_PIDS[0m: [0;32menabled[0m
+I0319 21:34:25.291078  102267 kubeadm.go:318] [0;37mCGROUPS_HUGETLB[0m: [0;32menabled[0m
+I0319 21:34:25.291114  102267 kubeadm.go:318] [0;37mCGROUPS_IO[0m: [0;32menabled[0m
+I0319 21:34:25.378067  102267 kubeadm.go:318] [preflight] Pulling images required for setting up a Kubernetes cluster
+I0319 21:34:25.378315  102267 kubeadm.go:318] [preflight] This might take a minute or two, depending on the speed of your internet connection
+I0319 21:34:25.378576  102267 kubeadm.go:318] [preflight] You can also perform this action beforehand using 'kubeadm config images pull'
+I0319 21:34:25.395353  102267 kubeadm.go:318] [certs] Using certificateDir folder "/var/lib/minikube/certs"
+I0319 21:34:25.396642  102267 out.go:252]     ▪ Generating certificates and keys ...
+I0319 21:34:25.396909  102267 kubeadm.go:318] [certs] Using existing ca certificate authority
+I0319 21:34:25.397120  102267 kubeadm.go:318] [certs] Using existing apiserver certificate and key on disk
+I0319 21:34:25.429113  102267 kubeadm.go:318] [certs] Generating "apiserver-kubelet-client" certificate and key
+I0319 21:34:25.557220  102267 kubeadm.go:318] [certs] Generating "front-proxy-ca" certificate and key
+I0319 21:34:25.593272  102267 kubeadm.go:318] [certs] Generating "front-proxy-client" certificate and key
+I0319 21:34:25.658777  102267 kubeadm.go:318] [certs] Generating "etcd/ca" certificate and key
+I0319 21:34:25.697939  102267 kubeadm.go:318] [certs] Generating "etcd/server" certificate and key
+I0319 21:34:25.698075  102267 kubeadm.go:318] [certs] etcd/server serving cert is signed for DNS names [localhost minikube] and IPs [192.168.49.2 127.0.0.1 ::1]
+I0319 21:34:25.727851  102267 kubeadm.go:318] [certs] Generating "etcd/peer" certificate and key
+I0319 21:34:25.727980  102267 kubeadm.go:318] [certs] etcd/peer serving cert is signed for DNS names [localhost minikube] and IPs [192.168.49.2 127.0.0.1 ::1]
+I0319 21:34:25.814288  102267 kubeadm.go:318] [certs] Generating "etcd/healthcheck-client" certificate and key
+I0319 21:34:25.830133  102267 kubeadm.go:318] [certs] Generating "apiserver-etcd-client" certificate and key
+I0319 21:34:25.949459  102267 kubeadm.go:318] [certs] Generating "sa" key and public key
+I0319 21:34:25.949535  102267 kubeadm.go:318] [kubeconfig] Using kubeconfig folder "/etc/kubernetes"
+I0319 21:34:26.033815  102267 kubeadm.go:318] [kubeconfig] Writing "admin.conf" kubeconfig file
+I0319 21:34:26.308211  102267 kubeadm.go:318] [kubeconfig] Writing "super-admin.conf" kubeconfig file
+I0319 21:34:26.354641  102267 kubeadm.go:318] [kubeconfig] Writing "kubelet.conf" kubeconfig file
+I0319 21:34:26.380047  102267 kubeadm.go:318] [kubeconfig] Writing "controller-manager.conf" kubeconfig file
+I0319 21:34:26.429502  102267 kubeadm.go:318] [kubeconfig] Writing "scheduler.conf" kubeconfig file
+I0319 21:34:26.430355  102267 kubeadm.go:318] [etcd] Creating static Pod manifest for local etcd in "/etc/kubernetes/manifests"
+I0319 21:34:26.434195  102267 kubeadm.go:318] [control-plane] Using manifest folder "/etc/kubernetes/manifests"
+I0319 21:34:26.434931  102267 out.go:252]     ▪ Booting up control plane ...
+I0319 21:34:26.435134  102267 kubeadm.go:318] [control-plane] Creating static Pod manifest for "kube-apiserver"
+I0319 21:34:26.435621  102267 kubeadm.go:318] [control-plane] Creating static Pod manifest for "kube-controller-manager"
+I0319 21:34:26.436918  102267 kubeadm.go:318] [control-plane] Creating static Pod manifest for "kube-scheduler"
+I0319 21:34:26.453010  102267 kubeadm.go:318] [kubelet-start] Writing kubelet environment file with flags to file "/var/lib/kubelet/kubeadm-flags.env"
+I0319 21:34:26.453242  102267 kubeadm.go:318] [kubelet-start] Writing kubelet configuration to file "/var/lib/kubelet/instance-config.yaml"
+I0319 21:34:26.461116  102267 kubeadm.go:318] [patches] Applied patch of type "application/strategic-merge-patch+json" to target "kubeletconfiguration"
+I0319 21:34:26.461728  102267 kubeadm.go:318] [kubelet-start] Writing kubelet configuration to file "/var/lib/kubelet/config.yaml"
+I0319 21:34:26.461799  102267 kubeadm.go:318] [kubelet-start] Starting the kubelet
+I0319 21:34:26.574915  102267 kubeadm.go:318] [wait-control-plane] Waiting for the kubelet to boot up the control plane as static Pods from directory "/etc/kubernetes/manifests"
+I0319 21:34:26.575164  102267 kubeadm.go:318] [kubelet-check] Waiting for a healthy kubelet at http://127.0.0.1:10248/healthz. This can take up to 4m0s
+I0319 21:34:27.080140  102267 kubeadm.go:318] [kubelet-check] The kubelet is healthy after 505.066462ms
+I0319 21:34:27.088791  102267 kubeadm.go:318] [control-plane-check] Waiting for healthy control plane components. This can take up to 4m0s
+I0319 21:34:27.090211  102267 kubeadm.go:318] [control-plane-check] Checking kube-apiserver at https://192.168.49.2:8443/livez
+I0319 21:34:27.091153  102267 kubeadm.go:318] [control-plane-check] Checking kube-controller-manager at https://127.0.0.1:10257/healthz
+I0319 21:34:27.091397  102267 kubeadm.go:318] [control-plane-check] Checking kube-scheduler at https://127.0.0.1:10259/livez
+I0319 21:34:28.606778  102267 kubeadm.go:318] [control-plane-check] kube-controller-manager is healthy after 1.517870547s
+I0319 21:34:29.967788  102267 kubeadm.go:318] [control-plane-check] kube-scheduler is healthy after 2.87939099s
+I0319 21:34:32.092537  102267 kubeadm.go:318] [control-plane-check] kube-apiserver is healthy after 5.003469995s
+I0319 21:34:32.120504  102267 kubeadm.go:318] [upload-config] Storing the configuration used in ConfigMap "kubeadm-config" in the "kube-system" Namespace
+I0319 21:34:32.134705  102267 kubeadm.go:318] [kubelet] Creating a ConfigMap "kubelet-config" in namespace kube-system with the configuration for the kubelets in the cluster
+I0319 21:34:32.155545  102267 kubeadm.go:318] [upload-certs] Skipping phase. Please see --upload-certs
+I0319 21:34:32.156058  102267 kubeadm.go:318] [mark-control-plane] Marking the node minikube as control-plane by adding the labels: [node-role.kubernetes.io/control-plane node.kubernetes.io/exclude-from-external-load-balancers]
+I0319 21:34:32.170489  102267 kubeadm.go:318] [bootstrap-token] Using token: e32ate.hasvn4fhsllvm3mb
+I0319 21:34:32.172694  102267 out.go:252]     ▪ Configuring RBAC rules ...
+I0319 21:34:32.173095  102267 kubeadm.go:318] [bootstrap-token] Configuring bootstrap tokens, cluster-info ConfigMap, RBAC Roles
+I0319 21:34:32.181029  102267 kubeadm.go:318] [bootstrap-token] Configured RBAC rules to allow Node Bootstrap tokens to get nodes
+I0319 21:34:32.193564  102267 kubeadm.go:318] [bootstrap-token] Configured RBAC rules to allow Node Bootstrap tokens to post CSRs in order for nodes to get long term certificate credentials
+I0319 21:34:32.197457  102267 kubeadm.go:318] [bootstrap-token] Configured RBAC rules to allow the csrapprover controller automatically approve CSRs from a Node Bootstrap Token
+I0319 21:34:32.202439  102267 kubeadm.go:318] [bootstrap-token] Configured RBAC rules to allow certificate rotation for all node client certificates in the cluster
+I0319 21:34:32.206404  102267 kubeadm.go:318] [bootstrap-token] Creating the "cluster-info" ConfigMap in the "kube-public" namespace
+I0319 21:34:32.498876  102267 kubeadm.go:318] [kubelet-finalize] Updating "/etc/kubernetes/kubelet.conf" to point to a rotatable kubelet client certificate and key
+I0319 21:34:32.931228  102267 kubeadm.go:318] [addons] Applied essential addon: CoreDNS
+I0319 21:34:33.501588  102267 kubeadm.go:318] [addons] Applied essential addon: kube-proxy
+I0319 21:34:33.503010  102267 kubeadm.go:318] 
+I0319 21:34:33.503229  102267 kubeadm.go:318] Your Kubernetes control-plane has initialized successfully!
+I0319 21:34:33.503241  102267 kubeadm.go:318] 
+I0319 21:34:33.503510  102267 kubeadm.go:318] To start using your cluster, you need to run the following as a regular user:
+I0319 21:34:33.503520  102267 kubeadm.go:318] 
+I0319 21:34:33.503602  102267 kubeadm.go:318]   mkdir -p $HOME/.kube
+I0319 21:34:33.503809  102267 kubeadm.go:318]   sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+I0319 21:34:33.503990  102267 kubeadm.go:318]   sudo chown $(id -u):$(id -g) $HOME/.kube/config
+I0319 21:34:33.503999  102267 kubeadm.go:318] 
+I0319 21:34:33.504185  102267 kubeadm.go:318] Alternatively, if you are the root user, you can run:
+I0319 21:34:33.504194  102267 kubeadm.go:318] 
+I0319 21:34:33.504357  102267 kubeadm.go:318]   export KUBECONFIG=/etc/kubernetes/admin.conf
+I0319 21:34:33.504365  102267 kubeadm.go:318] 
+I0319 21:34:33.504531  102267 kubeadm.go:318] You should now deploy a pod network to the cluster.
+I0319 21:34:33.504775  102267 kubeadm.go:318] Run "kubectl apply -f [podnetwork].yaml" with one of the options listed at:
+I0319 21:34:33.505003  102267 kubeadm.go:318]   https://kubernetes.io/docs/concepts/cluster-administration/addons/
+I0319 21:34:33.505012  102267 kubeadm.go:318] 
+I0319 21:34:33.505280  102267 kubeadm.go:318] You can now join any number of control-plane nodes by copying certificate authorities
+I0319 21:34:33.505523  102267 kubeadm.go:318] and service account keys on each node and then running the following as root:
+I0319 21:34:33.505531  102267 kubeadm.go:318] 
+I0319 21:34:33.505819  102267 kubeadm.go:318]   kubeadm join control-plane.minikube.internal:8443 --token e32ate.hasvn4fhsllvm3mb \
+I0319 21:34:33.506227  102267 kubeadm.go:318] 	--discovery-token-ca-cert-hash sha256:520a0df0ef55449e36a1ce4b618a7d0d339eb51a0c8dbe10a98c87a1397d4a00 \
+I0319 21:34:33.506301  102267 kubeadm.go:318] 	--control-plane 
+I0319 21:34:33.506311  102267 kubeadm.go:318] 
+I0319 21:34:33.506599  102267 kubeadm.go:318] Then you can join any number of worker nodes by running the following on each as root:
+I0319 21:34:33.506609  102267 kubeadm.go:318] 
+I0319 21:34:33.506889  102267 kubeadm.go:318] kubeadm join control-plane.minikube.internal:8443 --token e32ate.hasvn4fhsllvm3mb \
+I0319 21:34:33.507254  102267 kubeadm.go:318] 	--discovery-token-ca-cert-hash sha256:520a0df0ef55449e36a1ce4b618a7d0d339eb51a0c8dbe10a98c87a1397d4a00 
+I0319 21:34:33.512096  102267 kubeadm.go:318] 	[WARNING Swap]: swap is supported for cgroup v2 only. The kubelet must be properly configured to use swap. Please refer to https://kubernetes.io/docs/concepts/architecture/nodes/#swap-memory, or disable swap on the node
+I0319 21:34:33.512812  102267 kubeadm.go:318] 	[WARNING SystemVerification]: failed to parse kernel config: unable to load kernel module: "configs", output: "modprobe: FATAL: Module configs not found in directory /lib/modules/6.17.0-14-generic\n", err: exit status 1
+I0319 21:34:33.513175  102267 kubeadm.go:318] 	[WARNING Service-kubelet]: kubelet service is not enabled, please run 'systemctl enable kubelet.service'
+I0319 21:34:33.513209  102267 cni.go:83] Creating CNI manager for ""
+I0319 21:34:33.513236  102267 cni.go:157] "docker" driver + "docker" container runtime found on kubernetes v1.24+, recommending bridge
+I0319 21:34:33.515312  102267 out.go:179] 🔗  Configuring bridge CNI (Container Networking Interface) ...
+I0319 21:34:33.516442  102267 ssh_runner.go:194] Run: sudo mkdir -p /etc/cni/net.d
+I0319 21:34:33.535875  102267 ssh_runner.go:361] scp memory --> /etc/cni/net.d/1-k8s.conflist (496 bytes)
+I0319 21:34:33.560826  102267 ssh_runner.go:194] Run: /bin/bash -c "cat /proc/$(pgrep kube-apiserver)/oom_adj"
+I0319 21:34:33.560928  102267 ssh_runner.go:194] Run: sudo /var/lib/minikube/binaries/v1.35.0/kubectl create clusterrolebinding minikube-rbac --clusterrole=cluster-admin --serviceaccount=kube-system:default --kubeconfig=/var/lib/minikube/kubeconfig
+I0319 21:34:33.561010  102267 ssh_runner.go:194] Run: sudo /var/lib/minikube/binaries/v1.35.0/kubectl --kubeconfig=/var/lib/minikube/kubeconfig label --overwrite nodes minikube minikube.k8s.io/updated_at=2026_03_19T21_34_33_0700 minikube.k8s.io/version=v1.38.0 minikube.k8s.io/commit=de81223c61ab1bd97dcfcfa6d9d5c59e5da4a0cf minikube.k8s.io/name=minikube minikube.k8s.io/primary=true
+I0319 21:34:33.582697  102267 ops.go:34] apiserver oom_adj: -16
+I0319 21:34:33.759175  102267 kubeadm.go:1113] duration metric: took 198.340742ms to wait for elevateKubeSystemPrivileges
+I0319 21:34:33.759205  102267 kubeadm.go:402] duration metric: took 8.834789648s to StartCluster
+I0319 21:34:33.759223  102267 settings.go:141] acquiring lock: {Name:mkfea4c60118bd7ca21cd4c83a62128894f4252a Timeout:1m0s Delay:500ms}
+I0319 21:34:33.759301  102267 settings.go:149] Updating kubeconfig:  /home/black-berry/.kube/config
+I0319 21:34:33.760225  102267 lock.go:60] WriteFile acquiring /home/black-berry/.kube/config: {Name:mk92ff6c7ae446012b0dff15a82232c5daa0ef29 Timeout:1m0s Delay:500ms}
+I0319 21:34:33.760517  102267 ssh_runner.go:194] Run: /bin/bash -c "sudo /var/lib/minikube/binaries/v1.35.0/kubectl --kubeconfig=/var/lib/minikube/kubeconfig -n kube-system get configmap coredns -o yaml"
+I0319 21:34:33.760790  102267 start.go:237] Will wait 6m0s for node &{Name: IP:192.168.49.2 Port:8443 KubernetesVersion:v1.35.0 ContainerRuntime:docker ControlPlane:true Worker:true}
+I0319 21:34:33.760845  102267 config.go:183] Loaded profile config "minikube": Driver=docker, ContainerRuntime=docker, KubernetesVersion=v1.35.0
+I0319 21:34:33.760817  102267 addons.go:528] enable addons start: toEnable=map[ambassador:false amd-gpu-device-plugin:false auto-pause:false cloud-spanner:false csi-hostpath-driver:false dashboard:false default-storageclass:true efk:false freshpod:false gcp-auth:false gvisor:false headlamp:false inaccel:false ingress:false ingress-dns:false inspektor-gadget:false istio:false istio-provisioner:false kong:false kubeflow:false kubetail:false kubevirt:false logviewer:false metallb:false metrics-server:false nvidia-device-plugin:false nvidia-driver-installer:false nvidia-gpu-device-plugin:false olm:false pod-security-policy:false portainer:false registry:false registry-aliases:false registry-creds:false storage-provisioner:true storage-provisioner-rancher:false volcano:false volumesnapshots:false yakd:false]
+I0319 21:34:33.761043  102267 addons.go:71] Setting storage-provisioner=true in profile "minikube"
+I0319 21:34:33.761076  102267 addons.go:240] Setting addon storage-provisioner=true in "minikube"
+I0319 21:34:33.761121  102267 host.go:67] Checking if "minikube" exists ...
+I0319 21:34:33.761188  102267 addons.go:71] Setting default-storageclass=true in profile "minikube"
+I0319 21:34:33.761220  102267 addons_storage_classes.go:34] enableOrDisableStorageClasses default-storageclass=true on "minikube"
+I0319 21:34:33.761682  102267 cli_runner.go:164] Run: docker container inspect minikube --format={{.State.Status}}
+I0319 21:34:33.762101  102267 cli_runner.go:164] Run: docker container inspect minikube --format={{.State.Status}}
+I0319 21:34:33.762409  102267 out.go:179] 🔎  Verifying Kubernetes components...
+I0319 21:34:33.766086  102267 ssh_runner.go:194] Run: sudo systemctl daemon-reload
+I0319 21:34:33.821487  102267 addons.go:240] Setting addon default-storageclass=true in "minikube"
+I0319 21:34:33.821534  102267 host.go:67] Checking if "minikube" exists ...
+I0319 21:34:33.822164  102267 cli_runner.go:164] Run: docker container inspect minikube --format={{.State.Status}}
+I0319 21:34:33.832149  102267 out.go:179]     ▪ Using image gcr.io/k8s-minikube/storage-provisioner:v5
+I0319 21:34:33.858707  102267 addons.go:437] installing /etc/kubernetes/addons/storage-provisioner.yaml
+I0319 21:34:33.858720  102267 ssh_runner.go:361] scp memory --> /etc/kubernetes/addons/storage-provisioner.yaml (2676 bytes)
+I0319 21:34:33.858785  102267 cli_runner.go:164] Run: docker container inspect -f "'{{(index (index .NetworkSettings.Ports "22/tcp") 0).HostPort}}'" minikube
+I0319 21:34:33.891174  102267 sshutil.go:53] new ssh client: &{IP:127.0.0.1 Port:32778 SSHKeyPath:/home/black-berry/.minikube/machines/minikube/id_rsa Username:docker}
+I0319 21:34:33.903234  102267 addons.go:437] installing /etc/kubernetes/addons/storageclass.yaml
+I0319 21:34:33.903247  102267 ssh_runner.go:361] scp storageclass/storageclass.yaml --> /etc/kubernetes/addons/storageclass.yaml (271 bytes)
+I0319 21:34:33.903302  102267 cli_runner.go:164] Run: docker container inspect -f "'{{(index (index .NetworkSettings.Ports "22/tcp") 0).HostPort}}'" minikube
+I0319 21:34:33.919366  102267 ssh_runner.go:194] Run: /bin/bash -c "sudo /var/lib/minikube/binaries/v1.35.0/kubectl --kubeconfig=/var/lib/minikube/kubeconfig -n kube-system get configmap coredns -o yaml | sed -e '/^        forward . \/etc\/resolv.conf.*/i \        hosts {\n           192.168.49.1 host.minikube.internal\n           fallthrough\n        }' -e '/^        errors *$/i \        log' | sudo /var/lib/minikube/binaries/v1.35.0/kubectl --kubeconfig=/var/lib/minikube/kubeconfig replace -f -"
+I0319 21:34:33.928794  102267 sshutil.go:53] new ssh client: &{IP:127.0.0.1 Port:32778 SSHKeyPath:/home/black-berry/.minikube/machines/minikube/id_rsa Username:docker}
+I0319 21:34:34.033289  102267 ssh_runner.go:194] Run: sudo systemctl start kubelet
+I0319 21:34:34.045878  102267 ssh_runner.go:194] Run: sudo KUBECONFIG=/var/lib/minikube/kubeconfig /var/lib/minikube/binaries/v1.35.0/kubectl apply -f /etc/kubernetes/addons/storage-provisioner.yaml
+I0319 21:34:34.055107  102267 ssh_runner.go:194] Run: sudo KUBECONFIG=/var/lib/minikube/kubeconfig /var/lib/minikube/binaries/v1.35.0/kubectl apply -f /etc/kubernetes/addons/storageclass.yaml
+I0319 21:34:34.171891  102267 start.go:989] {"host.minikube.internal": 192.168.49.1} host record injected into CoreDNS's ConfigMap
+I0319 21:34:34.173443  102267 api_server.go:51] waiting for apiserver process to appear ...
+I0319 21:34:34.173481  102267 ssh_runner.go:194] Run: sudo pgrep -xnf kube-apiserver.*minikube.*
+I0319 21:34:34.371867  102267 api_server.go:71] duration metric: took 611.032107ms to wait for apiserver process to appear ...
+I0319 21:34:34.371884  102267 api_server.go:87] waiting for apiserver healthz status ...
+I0319 21:34:34.371905  102267 api_server.go:298] Checking apiserver healthz at https://192.168.49.2:8443/healthz ...
+I0319 21:34:34.380651  102267 api_server.go:324] https://192.168.49.2:8443/healthz returned 200:
+ok
+I0319 21:34:34.381709  102267 api_server.go:140] control plane version: v1.35.0
+I0319 21:34:34.381728  102267 api_server.go:130] duration metric: took 9.83555ms to wait for apiserver health ...
+I0319 21:34:34.381738  102267 system_pods.go:42] waiting for kube-system pods to appear ...
+I0319 21:34:34.385423  102267 out.go:179] 🌟  Enabled addons: storage-provisioner, default-storageclass
+I0319 21:34:34.386037  102267 addons.go:531] duration metric: took 625.223193ms for enable addons: enabled=[storage-provisioner default-storageclass]
+I0319 21:34:34.387490  102267 system_pods.go:58] 5 kube-system pods found
+I0319 21:34:34.387514  102267 system_pods.go:60] "etcd-minikube" [eb3f5cad-db3f-4338-87d2-ff044f924974] Running / Ready:ContainersNotReady (containers with unready status: [etcd]) / ContainersReady:ContainersNotReady (containers with unready status: [etcd])
+I0319 21:34:34.387522  102267 system_pods.go:60] "kube-apiserver-minikube" [c3be1c1a-7ea6-4a46-afae-75f495a3848a] Running
+I0319 21:34:34.387530  102267 system_pods.go:60] "kube-controller-manager-minikube" [4891ce37-bd29-4569-83d5-7b41ef4c2a1e] Running
+I0319 21:34:34.387546  102267 system_pods.go:60] "kube-scheduler-minikube" [9b5cc3b4-21bb-4bfe-9311-ab6ebfb8b47f] Running / Ready:ContainersNotReady (containers with unready status: [kube-scheduler]) / ContainersReady:ContainersNotReady (containers with unready status: [kube-scheduler])
+I0319 21:34:34.387553  102267 system_pods.go:60] "storage-provisioner" [464d158e-8d17-4c7b-9c72-8dfbd552e6f7] Pending
+I0319 21:34:34.387559  102267 system_pods.go:73] duration metric: took 5.815283ms to wait for pod list to return data ...
+I0319 21:34:34.387572  102267 kubeadm.go:586] duration metric: took 626.742129ms to wait for: map[apiserver:true system_pods:true]
+I0319 21:34:34.387586  102267 node_conditions.go:101] verifying NodePressure condition ...
+I0319 21:34:34.394279  102267 node_conditions.go:121] node storage ephemeral capacity is 243937628Ki
+I0319 21:34:34.394300  102267 node_conditions.go:122] node cpu capacity is 4
+I0319 21:34:34.394315  102267 node_conditions.go:104] duration metric: took 6.72486ms to run NodePressure ...
+I0319 21:34:34.394331  102267 start.go:243] waiting for startup goroutines ...
+I0319 21:34:34.675954  102267 kapi.go:214] "coredns" deployment in "kube-system" namespace and "minikube" context rescaled to 1 replicas
+I0319 21:34:34.676033  102267 start.go:248] waiting for cluster config update ...
+I0319 21:34:34.676062  102267 start.go:257] writing updated cluster config ...
+I0319 21:34:34.676554  102267 ssh_runner.go:194] Run: rm -f paused
+I0319 21:34:34.683552  102267 out.go:179] 💡  kubectl not found. If you need it, try: 'minikube kubectl -- get pods -A'
+I0319 21:34:34.685444  102267 out.go:179] 🏄  Done! kubectl is now configured to use "minikube" cluster and "default" namespace by default
+
+

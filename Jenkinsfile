@@ -45,14 +45,11 @@ pipeline {
         stage('Deploy to Kubernetes') {
             steps {
                 sh '''
-                # Load latest image into Minikube
-                # minikube image load blackberry07/mywebapp:latest
-
-                # Apply manifests
-                minikube kubectl -- apply -f k8s/deployment.yaml
-                minikube kubectl -- apply -f k8s/service.yaml
-                minikube service mywebapp-service
-                '''
+			minikube kubectl -- apply -f k8s/deployment.yaml
+			minikube kubectl -- apply -f k8s/service.yaml
+			SERVICE_URL=$(minikube service mywebapp-service --url)
+			echo "Application URL: $SERVICE_URL"
+			'''
             }
         }
     }
