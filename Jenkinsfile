@@ -27,7 +27,12 @@ pipeline {
 
         stage('Push Docker Image') {
             steps {
+                // Keep the Hub push if you want it as a backup
                 sh 'docker push blackberry07/mywebapp:latest'
+                
+                // ADD THIS: Load the image directly into Minikube
+                echo "Loading image into Minikube node..."
+                sh 'minikube image load blackberry07/mywebapp:latest'
             }
         }
 
@@ -57,15 +62,15 @@ pipeline {
         stage('Deploy to Kubernetes') {
             steps {
 			sh '''
-				# 1. Apply the manifests
 				minikube kubectl -- apply -f k8s/deployment.yaml
 				minikube kubectl -- apply -f k8s/service.yaml
 				
-				# 2. WAIT for the pods to be ready (This prevents Build #16 error)
-				echo "Waiting for pods to reach 'Running' state..."
-				minikube kubectl -- rollout status deployment/mywebapp-deployment --timeout=90s
+				# Force a restart to pick up the newly loaded image
+				minikube kubectl -- rollout restart deployment/mywebapp-deployment
 				
-				# 3. Now get the URL
+				echo "Waiting for pods..."
+				minikube kubectl -- rollout status deployment/mywebapp-deployment --timeout=180s
+				
 				SERVICE_URL=$(minikube service mywebapp-service --url)
 				echo "Application URL: $SERVICE_URL"
 				'''
