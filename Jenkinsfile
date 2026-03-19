@@ -27,11 +27,11 @@ pipeline {
 
         stage('Push Docker Image') {
             steps {
-                // Keep the Hub push if you want it as a backup
                 sh 'docker push blackberry07/mywebapp:latest'
                 
-                // ADD THIS: Load the image directly into Minikube
-                echo "Loading image into Minikube node..."
+                echo "Cleaning locks and loading image into Minikube..."
+                // Use the sudo permission we verified earlier
+                sh 'sudo rm -rf /tmp/minikube-locks'
                 sh 'minikube image load blackberry07/mywebapp:latest'
             }
         }
